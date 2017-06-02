@@ -13,12 +13,12 @@ public class Environment {
 	private float pH = (float) 7.0;
 	private int plantNum = 0;
 	private int fishNum= 0;
-	private int reptileNum = 0;
 	private Clock clock;
 	private AirTemperature airTemp;
+	private WaterTemperature waterTemp;
 
 	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float cO2fraction,
-			float o2fraction, float pH, int plantNum, int fishNum, int reptileNum) {
+			float o2fraction, float pH, int plantNum, int fishNum) {
 		super();
 		this.hour = hour;
 		this.airTemperature = airTemperature;
@@ -29,12 +29,12 @@ public class Environment {
 		this.pH = pH;
 		this.plantNum = plantNum;
 		this.fishNum = fishNum;
-		this.reptileNum = reptileNum;
 	}
 	
 	public Environment() {
 		this.clock = new Clock(this);
 		this.airTemp = new AirTemperature(this);
+		this.waterTemp = new WaterTemperature(this);
 	}
 	
 	private class Clock implements Runnable {
@@ -135,6 +135,7 @@ public class Environment {
 	private class WaterTemperature implements Runnable {
 		
 		private Environment env;
+		private int rate; // in Celsius per hour
 		
 		public WaterTemperature(Environment env) {
 			this.env = env;	
@@ -144,9 +145,17 @@ public class Environment {
 		public void run() {
 			synchronized(env) {
 				while (true) {
-					
+					if (env.airTemperature > env.waterTemperature) {
+						env.waterTemp.increase(this.rate);
+					} else if (env.airTemperature < env.waterTemperature) {
+						env.waterTemp.increase(- this.rate);
+					}
 				}
 			}
+		}
+		
+		public void increase (int rate) {
+			env.waterTemperature += rate;
 		}
 		
 		private void createThread() {
@@ -207,11 +216,5 @@ public class Environment {
 	public void setFishNum(int fishNum) {
 		this.fishNum = fishNum;
 	}
-	public int getReptileNum() {
-		return reptileNum;
-	}
-	public void setReptileNum(int reptileNum) {
-		this.reptileNum = reptileNum;
-	}
-	
+
 }

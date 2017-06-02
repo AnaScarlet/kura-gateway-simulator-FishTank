@@ -9,32 +9,44 @@ public class Environment {
 	private int waterTemperature = 0; // in Celsius by default
 	private int timeSpeed = 1; // ex: x2, x3, x10, where 0 is time stopped
 	private float CO2fraction = (float) 0.0;
-	private float O2fraction = (float) 0.0;
+	private float dissolvedOxygen = (float) 0.0;
 	private float pH = (float) 7.0;
 	private int plantNum = 0;
 	private int fishNum= 0;
+	private int decomposersNum = 0;
+	private int smallFishNum;
+	private int mediumFishNum;
+	private int largeFishNum;
+
 	private Clock clock;
 	private AirTemperature airTemp;
 	private WaterTemperature waterTemp;
+	private Fish fish;
+	private Decomposers decomposers;
+	private Plants plants;
 
 	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float cO2fraction,
-			float o2fraction, float pH, int plantNum, int fishNum) {
+			float dissolvedOxygen, float pH, int plantNum, int fishNum, int decomposersNum) {
 		super();
 		this.hour = hour;
 		this.airTemperature = airTemperature;
 		this.waterTemperature = waterTemperature;
 		this.timeSpeed = timeSpeed;
-		CO2fraction = cO2fraction;
-		O2fraction = o2fraction;
+		this.CO2fraction = cO2fraction;
+		this.dissolvedOxygen = dissolvedOxygen;
 		this.pH = pH;
 		this.plantNum = plantNum;
 		this.fishNum = fishNum;
+		this.decomposersNum = decomposersNum;
 	}
 	
 	public Environment() {
 		this.clock = new Clock(this);
 		this.airTemp = new AirTemperature(this);
 		this.waterTemp = new WaterTemperature(this);
+		this.fish = new Fish(this);
+		this.decomposers = new Decomposers(this);
+		this.plants = new Plants(this);
 	}
 	
 	private class Clock implements Runnable {
@@ -45,28 +57,17 @@ public class Environment {
 		private Calendar cal = Calendar.getInstance();
 		
 		public Clock(Environment env) {
-			this(1);
-			this.env = env;
-		}
-		
-		public Clock(final int timeSpeed) {
 			setHour();
-			env.setTimeSpeed(timeSpeed);
 			setINTERVAL();
-			createThread();
+			this.env = env;
+			env.createThread(this, "Clock Thread");
 		}
 		
-		public Clock(final int timeSpeed, final int hour) {
+		public Clock(final Environment env, final int hour) {
 			setHour(hour);
-			env.setTimeSpeed(timeSpeed);
 			setINTERVAL();
-			createThread();
-		}
-		
-		private void createThread() {
-			Thread t = new Thread(this, "Clock Thread");
-			t.start();
-			System.out.println(t + " started");
+			this.env = env;
+			env.createThread(this, "Clock Thread");
 		}
 		
 		public void run() {
@@ -106,7 +107,7 @@ public class Environment {
 		
 		public AirTemperature(Environment env) {
 			this.env = env;
-			createThread();
+			env.createThread(this, "Air Temperature Thread");
 		}
 		
 		public void run() {
@@ -124,12 +125,7 @@ public class Environment {
 		public void increase (int rate) {
 			env.airTemperature += rate;
 		}
-		
-		private void createThread() {
-			Thread t = new Thread(this, "Air Temperature Thread");
-			t.start();
-			System.out.println(t + " started");
-		}
+
 	}
 	
 	private class WaterTemperature implements Runnable {
@@ -139,7 +135,7 @@ public class Environment {
 		
 		public WaterTemperature(Environment env) {
 			this.env = env;	
-			createThread();
+			env.createThread(this, "Water Temperature Thread");
 		}
 		
 		public void run() {
@@ -157,12 +153,82 @@ public class Environment {
 		public void increase (int rate) {
 			env.waterTemperature += rate;
 		}
+
+	}
+	
+	private class Fish implements Runnable{
 		
-		private void createThread() {
-			Thread t = new Thread(this, "Water Temperature Thread");
-			t.start();
-			System.out.println(t + " started");
+		private Environment env; 
+		public static final float SMALL_FISH_DO = 4; // DO - dissolved oxygen in mg/L. 
+		public static final float MEDIUM_FISH_DO = (float) 7.5;
+		public static final float LARGE_FISH_DO = 12;
+		public static final int DEATH_RATE = 1; // fish per hour
+		
+		
+		public Fish(Environment env) {
+			this.env = env;
+			env.createThread(this, "Fish Thread");
 		}
+		
+		public void run() {
+			synchronized(env) {
+				while (true) {
+					if (env.dissolvedOxygen < Fish.SMALL_FISH_DO) {
+						env.smallFishNum -= Fish.DEATH_RATE;
+					} if (env.dissolvedOxygen < Fish.MEDIUM_FISH_DO) {
+						env.mediumFishNum -= Fish.DEATH_RATE;
+					} if (env.dissolvedOxygen < Fish.LARGE_FISH_DO) {
+						env.largeFishNum -= Fish.DEATH_RATE;
+					} 
+				}
+			}
+		}
+		
+	}
+	
+	private class Decomposers implements Runnable {
+		
+		private Environment env;
+		public static final float DO = 1;
+		public static final int DEATH_RATE = 5; // decomposers per hour
+		
+		public Decomposers(Environment env) {
+			this.env = env;
+			env.createThread(this, "Decomposers Thread");
+		}
+		
+		public void run() {
+			synchronized(env) {
+				while (true) {
+					if (env.dissolvedOxygen < Decomposers.DO) {
+						env.decomposersNum -= Decomposers.DEATH_RATE;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	private class Plants implements Runnable {
+		
+		private Environment env;
+		public static final int DEATH_RATE = 1; // plants per hour
+		
+		public Plants(Environment env) {
+			this.env = env;
+			env.createThread(this, "Plants Thread");
+		}
+		
+		public void run() {
+			
+		}
+		
+	}
+	
+	private void createThread(Runnable obj, String threadName) {
+		Thread t = new Thread(obj, threadName);
+		t.start();
+		System.out.println(t + " started");
 	}
 	
 	public int getHour() {
@@ -192,11 +258,11 @@ public class Environment {
 	public void setCO2fraction(float cO2fraction) {
 		CO2fraction = cO2fraction;
 	}
-	public float getO2fraction() {
-		return O2fraction;
+	public float getDissolvedOxygen() {
+		return dissolvedOxygen;
 	}
-	public void setO2fraction(float o2fraction) {
-		O2fraction = o2fraction;
+	public void setDissolvedOxygen(float dissolvedOxygen) {
+		this.dissolvedOxygen = dissolvedOxygen;
 	}
 	public float getpH() {
 		return pH;
@@ -215,6 +281,36 @@ public class Environment {
 	}
 	public void setFishNum(int fishNum) {
 		this.fishNum = fishNum;
+	}
+	public int getDecomposersNum() {
+		return decomposersNum;
+	}
+	public void setDecomposersNum(int decomposersNum) {
+		this.decomposersNum = decomposersNum;
+	}
+
+	public int getSmallFishNum() {
+		return smallFishNum;
+	}
+
+	public void setSmallFishNum(int smallFishNum) {
+		this.smallFishNum = smallFishNum;
+	}
+
+	public int getMediumFishNum() {
+		return mediumFishNum;
+	}
+
+	public void setMediumFishNum(int mediumFishNum) {
+		this.mediumFishNum = mediumFishNum;
+	}
+
+	public int getLargeFishNum() {
+		return largeFishNum;
+	}
+
+	public void setLargeFishNum(int largeFishNum) {
+		this.largeFishNum = largeFishNum;
 	}
 
 }

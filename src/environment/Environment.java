@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package environment_ai;
+package environment;
 
 import java.util.Calendar;
 
@@ -24,9 +24,10 @@ public class Environment {
 	private int plantNum = 0;
 	private int fishNum= 0;
 	private int decomposersNum = 0;
-	private int smallFishNum;
-	private int mediumFishNum;
-	private int largeFishNum;
+	private int smallFishNum = 0;
+	private int mediumFishNum = 0;
+	private int largeFishNum = 0;
+	private int deadOrganismMass = 0;
 
 	private Clock clock;
 	private AirTemperature airTemp;
@@ -169,10 +170,22 @@ public class Environment {
 	private class Fish implements Runnable{
 		
 		private Environment env; 
-		public static final float SMALL_FISH_DO = 4; // DO - dissolved oxygen in mg/L. 
-		public static final float MEDIUM_FISH_DO = (float) 7.5;
-		public static final float LARGE_FISH_DO = 12;
+		public static final float SMALL_FISH_MIN_DO = 2; // DO - dissolved oxygen in mg/L. 
+		public static final float MEDIUM_FISH_MIN_DO = 6;
+		public static final float LARGE_FISH_MIN_DO = 10;
+		public static final float SMALL_FISH_MAX_DO = 5; 
+		public static final float MEDIUM_FISH_MAX_DO = 9;
+		public static final float LARGE_FISH_MAX_DO = 14;
+		
 		public static final int DEATH_RATE = 1; // fish per hour
+		
+		public static final int SMALL_FISH_MASS = 100; // mass is relative to decomposer mass
+		public static final int MEDIUM_FISH_MASS = 500;
+		public static final int LARGE_FISH_MASS = 1000;
+		
+		public static final float SMALL_FISH_O2_CONSUMPTION_RATE = (float) 0.5;
+		public static final float MEDIUM_FISH_O2_CONSUMPTION_RATE = (float) 2;
+		public static final float LARGE_FISH_O2_CONSUMPTION_RATE = (float) 5;
 		
 		
 		public Fish(Environment env) {
@@ -183,12 +196,21 @@ public class Environment {
 		public void run() {
 			synchronized(env) {
 				while (true) {
-					if (env.dissolvedOxygen < Fish.SMALL_FISH_DO) {
+					if (env.dissolvedOxygen < Fish.SMALL_FISH_MIN_DO || 
+							env.dissolvedOxygen > Fish.SMALL_FISH_MAX_DO && env.smallFishNum < 0) {
 						env.smallFishNum -= Fish.DEATH_RATE;
-					} if (env.dissolvedOxygen < Fish.MEDIUM_FISH_DO) {
+						env.deadOrganismMass += Fish.SMALL_FISH_MASS;
+						env.dissolvedOxygen -= Fish.SMALL_FISH_O2_CONSUMPTION_RATE;
+					} if (env.dissolvedOxygen < Fish.MEDIUM_FISH_MIN_DO || 
+							env.dissolvedOxygen > Fish.MEDIUM_FISH_MAX_DO && env.mediumFishNum < 0) {
 						env.mediumFishNum -= Fish.DEATH_RATE;
-					} if (env.dissolvedOxygen < Fish.LARGE_FISH_DO) {
+						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS;
+						env.dissolvedOxygen -= Fish.MEDIUM_FISH_O2_CONSUMPTION_RATE;
+					} if (env.dissolvedOxygen < Fish.LARGE_FISH_MIN_DO || 
+							env.dissolvedOxygen > Fish.LARGE_FISH_MAX_DO && env.largeFishNum < 0) {
 						env.largeFishNum -= Fish.DEATH_RATE;
+						env.deadOrganismMass += Fish.LARGE_FISH_MASS;
+						env.dissolvedOxygen -= Fish.LARGE_FISH_O2_CONSUMPTION_RATE;
 					} 
 				}
 			}
@@ -201,6 +223,8 @@ public class Environment {
 		private Environment env;
 		public static final float DO = 1;
 		public static final int DEATH_RATE = 5; // decomposers per hour
+		public static final int MASS = 1;
+		public static final float O2_CONSUMPTION_RATE = (float) 0.025;
 		
 		public Decomposers(Environment env) {
 			this.env = env;
@@ -210,8 +234,13 @@ public class Environment {
 		public void run() {
 			synchronized(env) {
 				while (true) {
-					if (env.dissolvedOxygen < Decomposers.DO) {
+					if (env.dissolvedOxygen < Decomposers.DO && env.decomposersNum < 0) {
 						env.decomposersNum -= Decomposers.DEATH_RATE;
+						env.deadOrganismMass += Decomposers.MASS;
+					} if (env.deadOrganismMass < 0 && env.decomposersNum < 0) {
+						env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
+																// dead mass by one unit per hour
+						env.dissolvedOxygen -= Decomposers.O2_CONSUMPTION_RATE;
 					}
 				}
 			}
@@ -223,6 +252,7 @@ public class Environment {
 		
 		private Environment env;
 		public static final int DEATH_RATE = 1; // plants per hour
+		public static final int MASS = 150;
 		
 		public Plants(Environment env) {
 			this.env = env;

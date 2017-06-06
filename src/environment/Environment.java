@@ -199,22 +199,27 @@ public class Environment {
 					if (env.dissolvedOxygen < Fish.SMALL_FISH_MIN_DO || 
 							env.dissolvedOxygen > Fish.SMALL_FISH_MAX_DO && env.smallFishNum > 0) {
 						env.smallFishNum -= Fish.DEATH_RATE;
-						env.deadOrganismMass += Fish.SMALL_FISH_MASS;
-					} if (env.smallFishNum > 0) {
+						env.deadOrganismMass += Fish.SMALL_FISH_MASS * Fish.DEATH_RATE;
+					} 
+					if (env.smallFishNum > 0) {
 						env.dissolvedOxygen -= Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
 						env.CO2fraction += Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
-					} if (env.dissolvedOxygen < Fish.MEDIUM_FISH_MIN_DO || 
+					} 
+					if (env.dissolvedOxygen < Fish.MEDIUM_FISH_MIN_DO || 
 							env.dissolvedOxygen > Fish.MEDIUM_FISH_MAX_DO && env.mediumFishNum > 0) {
 						env.mediumFishNum -= Fish.DEATH_RATE;
-						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS;
-					} if (env.mediumFishNum > 0) {
+						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * Fish.DEATH_RATE;
+					} 
+					if (env.mediumFishNum > 0) {
 						env.dissolvedOxygen -= Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
 						env.CO2fraction += Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
-					} if (env.dissolvedOxygen < Fish.LARGE_FISH_MIN_DO || 
+					} 
+					if (env.dissolvedOxygen < Fish.LARGE_FISH_MIN_DO || 
 							env.dissolvedOxygen > Fish.LARGE_FISH_MAX_DO && env.largeFishNum > 0) {
 						env.largeFishNum -= Fish.DEATH_RATE;
-						env.deadOrganismMass += Fish.LARGE_FISH_MASS;
-					} if (env.largeFishNum > 0) {
+						env.deadOrganismMass += Fish.LARGE_FISH_MASS * Fish.DEATH_RATE;
+					} 
+					if (env.largeFishNum > 0) {
 						env.dissolvedOxygen -= Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
 						env.CO2fraction += Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
 					} 
@@ -243,7 +248,8 @@ public class Environment {
 					if (env.dissolvedOxygen < Decomposers.DO && env.decomposersNum > 0) {
 						env.decomposersNum -= Decomposers.DEATH_RATE;
 						env.deadOrganismMass += Decomposers.MASS * Decomposers.DEATH_RATE;
-					} if (env.deadOrganismMass < 0 && env.decomposersNum > 0) {
+					} 
+					if (env.deadOrganismMass < 0 && env.decomposersNum > 0) {
 						env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
 																// dead mass by one unit per hour
 						env.dissolvedOxygen -= Decomposers.RESPIRATION_RATE * env.decomposersNum;
@@ -274,30 +280,14 @@ public class Environment {
 					if (env.CO2fraction < Plants.CO2_FRACTION_REQ && env.plantNum > 0) {
 						env.plantNum -= Plants.DEATH_RATE;
 						env.deadOrganismMass += Plants.MASS * Plants.DEATH_RATE;
-					} if (env.plantNum > 0) {
+					} 
+					if (env.plantNum > 0) {
 						env.dissolvedOxygen += Plants.PHOTOSYNTHESIS_RATE * env.plantNum;
 					}
 				}
 			}
 		}
 		
-	}
-	
-	private class Oxygen implements Runnable {
-		private Environment env;
-		
-		public Oxygen(Environment env) {
-			this.env = env;
-			env.createThread(this, "Oxygen Thread");
-		}
-		
-		public void run() {
-			synchronized(env) {
-				while (true) {
-					// implement devices???
-				}
-			}
-		}
 	}
 	
 	private class PH implements Runnable {

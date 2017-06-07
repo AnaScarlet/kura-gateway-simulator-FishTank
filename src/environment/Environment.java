@@ -18,9 +18,10 @@ public class Environment {
 	private int airTemperature = 0; // in Celsius by default
 	private int waterTemperature = 0; // in Celsius by default
 	private int timeSpeed = 1; // ex: x2, x3, x10, where 0 is time stopped
-	private float CO2fraction = (float) 0.0;
+	private float dissolvedCO2 = (float) 0.0;
 	private float dissolvedOxygen = (float) 0.0;
 	private float pH = (float) 7.0;
+	private float pHchangeInDay = 0;
 	private int plantNum = 0;
 	private int fishNum= 0;
 	private int decomposersNum = 0;
@@ -35,15 +36,18 @@ public class Environment {
 	private Fish fish;
 	private Decomposers decomposers;
 	private Plants plants;
+	private PH pHobj;
 
-	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float cO2fraction,
+	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float dissolvedCO2,
 			float dissolvedOxygen, float pH, int plantNum, int fishNum, int decomposersNum) {
-		super();
+		this(true);
+		this.clock = new Clock(this, hour);
+		
 		this.hour = hour;
 		this.airTemperature = airTemperature;
 		this.waterTemperature = waterTemperature;
 		this.timeSpeed = timeSpeed;
-		this.CO2fraction = cO2fraction;
+		this.dissolvedCO2 = dissolvedCO2;
 		this.dissolvedOxygen = dissolvedOxygen;
 		this.pH = pH;
 		this.plantNum = plantNum;
@@ -51,13 +55,15 @@ public class Environment {
 		this.decomposersNum = decomposersNum;
 	}
 	
-	public Environment() {
-		this.clock = new Clock(this);
+	public Environment(boolean calledOn) {
+		if (!calledOn)
+			this.clock = new Clock(this);
 		this.airTemp = new AirTemperature(this);
 		this.waterTemp = new WaterTemperature(this);
 		this.fish = new Fish(this);
 		this.decomposers = new Decomposers(this);
 		this.plants = new Plants(this);
+		this.pHobj = new PH(this);
 	}
 	
 	private class Clock implements Runnable {
@@ -167,6 +173,11 @@ public class Environment {
 
 	}
 	
+	/**
+	 * Reference: http://www.fondriest.com/environmental-measurements/parameters/water-quality/
+	 * @author Owner
+	 *
+	 */
 	private class Fish implements Runnable{
 		
 		private Environment env; 
@@ -197,31 +208,34 @@ public class Environment {
 			synchronized(env) {
 				while (true) {
 					if (env.dissolvedOxygen < Fish.SMALL_FISH_MIN_DO || 
-							env.dissolvedOxygen > Fish.SMALL_FISH_MAX_DO && env.smallFishNum > 0) {
+							env.dissolvedOxygen > Fish.SMALL_FISH_MAX_DO
+							|| env.pHchangeInDay > 1.5 && env.smallFishNum > 0) {
 						env.smallFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.SMALL_FISH_MASS * Fish.DEATH_RATE;
 					} 
-					if (env.smallFishNum > 0) {
+					if (env.smallFishNum > 0 && env.pHchangeInDay < 1.5) {
 						env.dissolvedOxygen -= Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
-						env.CO2fraction += Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
+						env.dissolvedCO2 += Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
 					} 
 					if (env.dissolvedOxygen < Fish.MEDIUM_FISH_MIN_DO || 
-							env.dissolvedOxygen > Fish.MEDIUM_FISH_MAX_DO && env.mediumFishNum > 0) {
+							env.dissolvedOxygen > Fish.MEDIUM_FISH_MAX_DO
+							|| env.pHchangeInDay > 1.5 && env.mediumFishNum > 0) {
 						env.mediumFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * Fish.DEATH_RATE;
 					} 
-					if (env.mediumFishNum > 0) {
+					if (env.mediumFishNum > 0 && env.pHchangeInDay < 1.5) {
 						env.dissolvedOxygen -= Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
-						env.CO2fraction += Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
+						env.dissolvedCO2 += Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
 					} 
 					if (env.dissolvedOxygen < Fish.LARGE_FISH_MIN_DO || 
-							env.dissolvedOxygen > Fish.LARGE_FISH_MAX_DO && env.largeFishNum > 0) {
+							env.dissolvedOxygen > Fish.LARGE_FISH_MAX_DO
+							|| env.pHchangeInDay > 1.5 && env.largeFishNum > 0) {
 						env.largeFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.LARGE_FISH_MASS * Fish.DEATH_RATE;
 					} 
-					if (env.largeFishNum > 0) {
+					if (env.largeFishNum > 0 && env.pHchangeInDay < 1.5) {
 						env.dissolvedOxygen -= Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
-						env.CO2fraction += Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
+						env.dissolvedCO2 += Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
 					} 
 				}
 			}
@@ -253,12 +267,11 @@ public class Environment {
 						env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
 																// dead mass by one unit per hour
 						env.dissolvedOxygen -= Decomposers.RESPIRATION_RATE * env.decomposersNum;
-						env.CO2fraction += Decomposers.RESPIRATION_RATE * env.decomposersNum;
+						env.dissolvedCO2 += Decomposers.RESPIRATION_RATE * env.decomposersNum;
 					}
 				}
 			}
 		}
-		
 	}
 	
 	private class Plants implements Runnable {
@@ -277,11 +290,12 @@ public class Environment {
 		public void run() {
 			synchronized(env) {
 				while (true) {
-					if (env.CO2fraction < Plants.CO2_FRACTION_REQ && env.plantNum > 0) {
+					if (env.dissolvedCO2 < Plants.CO2_FRACTION_REQ
+							|| env.pHchangeInDay > 2 && env.plantNum > 0) {
 						env.plantNum -= Plants.DEATH_RATE;
 						env.deadOrganismMass += Plants.MASS * Plants.DEATH_RATE;
 					} 
-					if (env.plantNum > 0) {
+					if (env.plantNum > 0 && env.pHchangeInDay < 2) {
 						env.dissolvedOxygen += Plants.PHOTOSYNTHESIS_RATE * env.plantNum;
 					}
 				}
@@ -292,6 +306,8 @@ public class Environment {
 	
 	private class PH implements Runnable {
 		private Environment env;
+		private int phChange = 0;
+		private int numTimesRan = 0;
 		
 		public PH(Environment env) {
 			this.env = env;
@@ -301,10 +317,55 @@ public class Environment {
 		public void run() {
 			synchronized(env) {
 				while (true) {
-					// how CO2 affects pH... 
+					int reactionRate = 0;
+					try {
+						reactionRate = this.calcCO2ReactionRate();
+					} catch (UnlikelyPHException e) {
+						e.printStackTrace();
+					}
+					if (this.calcTotalPhotosynthesisRate() < this.calcTotalRespirationRate()) {
+						env.pH += reactionRate;
+						if (numTimesRan <= 23) {
+							phChange += reactionRate;
+							numTimesRan++;
+						} else {
+							env.pHchangeInDay = phChange;
+							numTimesRan = 0;
+						}
+					} 
 				}
 			}
 		}
+		
+		private float calcTotalRespirationRate() {
+			return (Decomposers.RESPIRATION_RATE * (float) env.decomposersNum) + 
+					(Fish.SMALL_FISH_RESPIRATION_RATE * (float) env.smallFishNum) + 
+					(Fish.MEDIUM_FISH_RESPIRATION_RATE * (float) env.mediumFishNum) +
+					(Fish.LARGE_FISH_RESPIRATION_RATE * (float) env.largeFishNum);
+		}
+		
+		private float calcTotalPhotosynthesisRate() {
+			return Plants.PHOTOSYNTHESIS_RATE * env.plantNum;
+		}
+		
+		/**
+		 * Reference: http://ion.chem.usu.edu/~sbialkow/Classes/3650/Carbonate/Carbonic%20Acid.html
+		 * @return reactionRate
+		 * @throws UnlikelyPHException
+		 */
+		private int calcCO2ReactionRate() throws UnlikelyPHException {
+			int reactionRate = 0;
+			if (env.pH < 6.4 && env.pH > -1) {
+			} else if (env.pH > 6.4 && env.pH < 10.4) {
+				reactionRate = 1;
+			} else if (env.pH > 10.4 && env.pH < 15) {
+				reactionRate = 2;
+			} else {
+				throw new UnlikelyPHException();
+			}
+			return reactionRate;
+		}
+
 	}
 	
 	private void createThread(Runnable obj, String threadName) {
@@ -334,11 +395,11 @@ public class Environment {
 	public void setTimeSpeed(int timeSpeed) {
 		this.timeSpeed = timeSpeed;
 	}
-	public float getCO2fraction() {
-		return CO2fraction;
+	public float getdissolvedCO2() {
+		return dissolvedCO2;
 	}
-	public void setCO2fraction(float cO2fraction) {
-		CO2fraction = cO2fraction;
+	public void setdissolvedCO2(float dissolvedCO2) {
+		this.dissolvedCO2 = dissolvedCO2;
 	}
 	public float getDissolvedOxygen() {
 		return dissolvedOxygen;

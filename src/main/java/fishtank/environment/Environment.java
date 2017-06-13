@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package environment;
+package main.java.fishtank.environment;
 
 import java.util.Calendar;
 
@@ -23,7 +23,6 @@ public class Environment {
 	private float pH = (float) 7.0;
 	private float pHchangeInDay = 0;
 	private int plantNum = 0;
-	private int fishNum= 0;
 	private int decomposersNum = 0;
 	private int smallFishNum = 0;
 	private int mediumFishNum = 0;
@@ -39,7 +38,8 @@ public class Environment {
 	private PH pHobj;
 
 	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float dissolvedCO2,
-			float dissolvedOxygen, float pH, int plantNum, int fishNum, int decomposersNum) {
+			float dissolvedOxygen, float pH, int plantNum, int smallFishNum, int mediumFishNum, int largeFishNum,
+			int decomposersNum) {
 		this(true);
 		this.clock = new Clock(this, hour);
 		
@@ -51,7 +51,9 @@ public class Environment {
 		this.dissolvedOxygen = dissolvedOxygen;
 		this.pH = pH;
 		this.plantNum = plantNum;
-		this.fishNum = fishNum;
+		this.smallFishNum = smallFishNum;
+		this.mediumFishNum = mediumFishNum;
+		this.largeFishNum = largeFishNum;
 		this.decomposersNum = decomposersNum;
 	}
 	
@@ -90,7 +92,6 @@ public class Environment {
 		public void run() {
 			synchronized(env) {
 				while(true) {
-					System.out.println("The hour is " + env.hour);
 					try {
 						Thread.sleep(this.interval);
 					} catch (InterruptedException e) {
@@ -98,6 +99,7 @@ public class Environment {
 					}
 					cal.roll(Calendar.HOUR_OF_DAY, true);
 					setHour();
+					env.notifyAll();
 				}
 			}
 		}
@@ -167,7 +169,7 @@ public class Environment {
 			}
 		}
 		
-		public void increase (int rate) {
+		private void increase (int rate) {
 			env.waterTemperature += rate;
 		}
 
@@ -355,10 +357,10 @@ public class Environment {
 		 */
 		private int calcCO2ReactionRate() throws UnlikelyPHException {
 			int reactionRate = 0;
-			if (env.pH < 6.4 && env.pH > -1) {
+			if (env.pH < 6.4 && env.pH > 0) {
 			} else if (env.pH > 6.4 && env.pH < 10.4) {
 				reactionRate = 1;
-			} else if (env.pH > 10.4 && env.pH < 15) {
+			} else if (env.pH > 10.4 && env.pH < 14) {
 				reactionRate = 2;
 			} else {
 				throw new UnlikelyPHException();
@@ -373,66 +375,60 @@ public class Environment {
 		t.start();
 		System.out.println(t + " started");
 	}
-	
-	public int getHour() {
+
+	public synchronized int getHour() {
 		return hour;
 	}
-	public int getAirTemperature() {
+	public synchronized int getAirTemperature() {
 		return airTemperature;
 	}
 	public void setAirTemperature(int airTemperature) {
 		this.airTemperature = airTemperature;
 	}
-	public int getWaterTemperature() {
+	public synchronized int getWaterTemperature() {
 		return waterTemperature;
 	}
 	public void setWaterTemperature(int waterTemperature) {
 		this.waterTemperature = waterTemperature;
 	}
-	public int getTimeSpeed() {
+	public synchronized int getTimeSpeed() {
 		return timeSpeed;
 	}
 	public void setTimeSpeed(int timeSpeed) {
 		this.timeSpeed = timeSpeed;
 	}
-	public float getdissolvedCO2() {
+	public synchronized float getdissolvedCO2() {
 		return dissolvedCO2;
 	}
 	public void setdissolvedCO2(float dissolvedCO2) {
 		this.dissolvedCO2 = dissolvedCO2;
 	}
-	public float getDissolvedOxygen() {
+	public synchronized float getDissolvedOxygen() {
 		return dissolvedOxygen;
 	}
 	public void setDissolvedOxygen(float dissolvedOxygen) {
 		this.dissolvedOxygen = dissolvedOxygen;
 	}
-	public float getpH() {
+	public synchronized float getpH() {
 		return pH;
 	}
 	public void setpH(float pH) {
 		this.pH = pH;
 	}
-	public int getPlantNum() {
+	public synchronized int getPlantNum() {
 		return plantNum;
 	}
 	public void setPlantNum(int plantNum) {
 		this.plantNum = plantNum;
 	}
-	public int getFishNum() {
-		return fishNum;
-	}
-	public void setFishNum(int fishNum) {
-		this.fishNum = fishNum;
-	}
-	public int getDecomposersNum() {
+	public synchronized int getDecomposersNum() {
 		return decomposersNum;
 	}
 	public void setDecomposersNum(int decomposersNum) {
 		this.decomposersNum = decomposersNum;
 	}
 
-	public int getSmallFishNum() {
+	public synchronized int getSmallFishNum() {
 		return smallFishNum;
 	}
 
@@ -440,7 +436,7 @@ public class Environment {
 		this.smallFishNum = smallFishNum;
 	}
 
-	public int getMediumFishNum() {
+	public synchronized int getMediumFishNum() {
 		return mediumFishNum;
 	}
 
@@ -448,7 +444,7 @@ public class Environment {
 		this.mediumFishNum = mediumFishNum;
 	}
 
-	public int getLargeFishNum() {
+	public synchronized int getLargeFishNum() {
 		return largeFishNum;
 	}
 

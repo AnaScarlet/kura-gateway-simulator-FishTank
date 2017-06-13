@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package devices;
+package main.java.fishtank.devices;
 
 public interface FishTankDevice extends Runnable {
 	

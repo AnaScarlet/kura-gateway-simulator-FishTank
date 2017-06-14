@@ -26,4 +26,6 @@ public interface FishTankDevice extends Runnable {
 	
 	public String getErrorLogFile();
 	
+	@Override
+	public String toString();
 }

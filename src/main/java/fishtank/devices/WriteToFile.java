@@ -12,11 +12,11 @@ import main.java.fishtank.environment.Environment;
 
 public class WriteToFile {
 	
-	public static final String dataFilePath = "../resources/jsonData.json";
+	public static final String dataFilePath = "C:/Users/Owner/git/kura-gateway-simulator-FishTank/src/resources/jsonData.json";
 
-	public void writeToFile (ArrayList data, FishTankDevice obj) {
+	public void writeToFile (FishTankDevice obj) {
 		Gson gson = new Gson();
-		String gsonRepr = gson.toJson(obj) + "," + gson.toJson(data);
+		String gsonRepr = gson.toJson(obj);
 		System.out.println(gsonRepr);
 		
 		try {

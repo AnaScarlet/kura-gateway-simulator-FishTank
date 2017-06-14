@@ -30,6 +30,7 @@ public class Clock implements FishTankDevice {
 		}
 		
 		this.env = env;
+		this.createThread(this, "Clock Device Thread");
 	}
 	
 	public void run() {
@@ -50,9 +51,15 @@ public class Clock implements FishTankDevice {
 
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToFile()).writeToFile(hoursArray, this);
+			(new WriteToFile()).writeToFile(this);
 			return true;
 		} return false;
+	}
+	
+	private void createThread(Runnable obj, String threadName) {
+		Thread t = new Thread(obj, threadName);
+		t.start();
+		System.out.println(t + " started");
 	}
 	
 	public boolean isRunning() {

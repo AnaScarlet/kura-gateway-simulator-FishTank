@@ -8,7 +8,6 @@ public class EnvironmentTest {
 
 	private Environment env = new Environment(0, 25, 18, 1, 1, 5, 7, 1, 1, 1, 1, 20);
 	
-	@Test
 	public void airTempIfLogic() {
 		
 	}

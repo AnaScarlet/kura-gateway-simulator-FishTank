@@ -12,37 +12,29 @@ package main.java.fishtank.environment;
 
 import java.util.Calendar;
 
-public class Environment {
+public class Environment extends Thread {
 	
-	private int hour = 0; // 24-hour format
-	private int airTemperature = 0; // in Celsius by default
-	private int waterTemperature = 0; // in Celsius by default
+	private volatile int hour = 0; // 24-hour format
+	private volatile int airTemperature = 0; // in Celsius by default
+	private volatile int waterTemperature = 0; // in Celsius by default
 	private int timeSpeed = 1; // ex: x2, x3, x10, where 0 is time stopped
 	private float dissolvedCO2 = (float) 0.0;
-	private float dissolvedOxygen = (float) 0.0;
+	private volatile float dissolvedOxygen = (float) 0.0;
 	private float pH = (float) 7.0;
-	private float pHchangeInDay = 0;
+	private volatile float pHchangeInDay = 0;
 	private int plantNum = 0;
 	private int decomposersNum = 0;
 	private int smallFishNum = 0;
 	private int mediumFishNum = 0;
 	private int largeFishNum = 0;
-	private int deadOrganismMass = 0;
+	private volatile int deadOrganismMass = 0;
 
-	private Clock clock;
-	private AirTemperature airTemp;
-	private WaterTemperature waterTemp;
-	private Fish fish;
-	private Decomposers decomposers;
-	private Plants plants;
-	private PH pHobj;
+	private static WriteToFile writer;
+	private static boolean run;
 
 	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float dissolvedCO2,
 			float dissolvedOxygen, float pH, int plantNum, int smallFishNum, int mediumFishNum, int largeFishNum,
 			int decomposersNum) {
-		this(true);
-		this.clock = new Clock(this, hour);
-		
 		this.hour = hour;
 		this.airTemperature = airTemperature;
 		this.waterTemperature = waterTemperature;
@@ -54,75 +46,85 @@ public class Environment {
 		this.smallFishNum = smallFishNum;
 		this.mediumFishNum = mediumFishNum;
 		this.largeFishNum = largeFishNum;
-		this.decomposersNum = decomposersNum;
+		this.decomposersNum = decomposersNum;		
 	}
 	
-	public Environment(boolean calledOn) {
-		if (!calledOn)
-			this.clock = new Clock(this);
-		this.airTemp = new AirTemperature(this);
-		this.waterTemp = new WaterTemperature(this);
-		this.fish = new Fish(this);
-		this.decomposers = new Decomposers(this);
-		this.plants = new Plants(this);
-		this.pHobj = new PH(this);
-	}
-	
-	private class Clock implements Runnable {
+	public void run() {
+		Environment.run = true;
+		Environment.writer = new WriteToFile("envData.txt");
 		
-		public static final int MILLISEC = 216000;
+		System.out.println("Preparations complete.");
+		
+		new Clock(this, this.hour);
+		new AirTemperature(this);
+		new WaterTemperature(this);
+		new Fish(this);
+		new Decomposers(this);
+		new Plants(this);
+		new PH(this);
+		
+		System.out.println("Threads started.");		
+	}
+	
+	private static class Clock implements Runnable {
+		
+		public static final int MILLISEC = 60000;
 		protected int interval;
 		private Environment env;
 		private Calendar cal = Calendar.getInstance();
-		
-		public Clock(Environment env) {
-			setHour();
-			setINTERVAL();
-			this.env = env;
-			env.createThread(this, "Clock Thread");
-		}
+		private static boolean clockDone = false;
 		
 		public Clock(final Environment env, final int hour) {
+			this.env = env;
 			setHour(hour);
 			setINTERVAL();
-			this.env = env;
+			
 			env.createThread(this, "Clock Thread");
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while(true) {
-					try {
-						Thread.sleep(this.interval);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					cal.roll(Calendar.HOUR_OF_DAY, true);
-					setHour();
+			while(run) {
+				clockDone = false;
+				System.out.println("In Clock Thread");
+				try {
+					Thread.sleep(this.interval);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				cal.roll(Calendar.HOUR_OF_DAY, true);
+				setHour();
+				synchronized(env) {
+					writer.writeToFile("Hour:" + String.valueOf(env.getHour()) + ",");
+					System.out.println("Clock data written to file.");
+					clockDone = true;
 					env.notifyAll();
 				}
 			}
 		}
 		
-		public void setHour() {
+		public synchronized void setHour() {
 			env.hour = cal.get(Calendar.HOUR_OF_DAY);
 		}
 		
-		public void setHour(final int hour) {
+		public  synchronized void setHour(final int hour) {
 			cal.set(Calendar.HOUR_OF_DAY, hour);
 			this.setHour();
 		}
 		
-		public void setINTERVAL() {
+		public synchronized void setINTERVAL() {
 			this.interval = MILLISEC / env.timeSpeed;
 		}
 
+		public static boolean clockDone(){
+			return clockDone;
+		}
+		
 	}
 	
 	private class AirTemperature implements Runnable {
 		
 		private Environment env;
-		private int rate; // in Celsius per hour
+		private int rate = 1; // in Celsius per hour
 		
 		public AirTemperature(Environment env) {
 			this.env = env;
@@ -130,18 +132,26 @@ public class Environment {
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while(true) {
-					if (this.env.hour < 6 && this.env.hour > 10) {
-						airTemp.increase(this.rate);
-					} else if (this.env.hour > 6 && this.env.hour < 10) {
-						airTemp.increase(- this.rate);
+			while(!Clock.clockDone()) {
+				synchronized(env) {
+					try {
+						env.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
+					System.out.println("In Air Temperature Thread");
+					if (this.env.hour < 6 && this.env.hour > 10) {
+						this.increase(this.rate);
+					} else if (this.env.hour > 6 && this.env.hour < 10) {
+						this.increase(- this.rate);
+					}
+					writer.writeToFile("Air Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
+					System.out.println("Air Temperature data written to file.");
 				}
 			}
 		}
 		
-		public void increase (int rate) {
+		public synchronized void increase (int rate) {
 			env.airTemperature += rate;
 		}
 
@@ -150,7 +160,7 @@ public class Environment {
 	private class WaterTemperature implements Runnable {
 		
 		private Environment env;
-		private int rate; // in Celsius per hour
+		private int rate = 1; // in Celsius per hour
 		
 		public WaterTemperature(Environment env) {
 			this.env = env;	
@@ -158,18 +168,26 @@ public class Environment {
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while (true) {
-					if (env.airTemperature > env.waterTemperature) {
-						env.waterTemp.increase(this.rate);
-					} else if (env.airTemperature < env.waterTemperature) {
-						env.waterTemp.increase(- this.rate);
+			while(!Clock.clockDone()) {
+				synchronized(env) {
+					try {
+						env.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
+					System.out.println("In Water Temperature Thread");
+					if (env.airTemperature > env.waterTemperature) {
+						this.increase(this.rate);
+					} else if (env.airTemperature < env.waterTemperature) {
+						this.increase(- this.rate);
+					}
+					writer.writeToFile("Water Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
+					System.out.println("Water Temperature data written to file.");
 				}
 			}
 		}
 		
-		private void increase (int rate) {
+		private synchronized void increase (int rate) {
 			env.waterTemperature += rate;
 		}
 
@@ -186,9 +204,9 @@ public class Environment {
 		public static final float SMALL_FISH_MIN_DO = 2; // DO - dissolved oxygen in mg/L. 
 		public static final float MEDIUM_FISH_MIN_DO = 6;
 		public static final float LARGE_FISH_MIN_DO = 10;
-		public static final float SMALL_FISH_MAX_DO = 5; 
-		public static final float MEDIUM_FISH_MAX_DO = 9;
-		public static final float LARGE_FISH_MAX_DO = 14;
+		public static final float SMALL_FISH_MAX_DO = 6; 
+		public static final float MEDIUM_FISH_MAX_DO = 10;
+		public static final float LARGE_FISH_MAX_DO = 15;
 		
 		public static final int DEATH_RATE = 1; // fish per hour
 		
@@ -196,9 +214,9 @@ public class Environment {
 		public static final int MEDIUM_FISH_MASS = 500;
 		public static final int LARGE_FISH_MASS = 1000;
 		
-		public static final float SMALL_FISH_RESPIRATION_RATE = (float) 0.5;
-		public static final float MEDIUM_FISH_RESPIRATION_RATE = (float) 2;
-		public static final float LARGE_FISH_RESPIRATION_RATE = (float) 5;
+		public static final float SMALL_FISH_RESPIRATION_RATE = (float) 0.05;
+		public static final float MEDIUM_FISH_RESPIRATION_RATE = (float) 0.2;
+		public static final float LARGE_FISH_RESPIRATION_RATE = (float) 0.5;
 		
 		
 		public Fish(Environment env) {
@@ -207,38 +225,60 @@ public class Environment {
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while (true) {
-					if (env.dissolvedOxygen < Fish.SMALL_FISH_MIN_DO || 
+			while(!Clock.clockDone()) {
+				synchronized(env) {
+					try {
+						env.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println("In Fish Thread");
+					if ((env.dissolvedOxygen < Fish.SMALL_FISH_MIN_DO || 
 							env.dissolvedOxygen > Fish.SMALL_FISH_MAX_DO
-							|| env.pHchangeInDay > 1.5 && env.smallFishNum > 0) {
+							|| env.pHchangeInDay > 1.5) && env.smallFishNum > 0) {
 						env.smallFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.SMALL_FISH_MASS * Fish.DEATH_RATE;
 					} 
+					if (env.dissolvedOxygen == 0 && env.smallFishNum > 0) {
+						env.smallFishNum = 0;
+						env.deadOrganismMass += Fish.SMALL_FISH_MASS * env.smallFishNum;
+					}
 					if (env.smallFishNum > 0 && env.pHchangeInDay < 1.5) {
-						env.dissolvedOxygen -= Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
 						env.dissolvedCO2 += Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
+						env.dissolvedOxygen -= Fish.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
 					} 
-					if (env.dissolvedOxygen < Fish.MEDIUM_FISH_MIN_DO || 
+					if ((env.dissolvedOxygen < Fish.MEDIUM_FISH_MIN_DO || 
 							env.dissolvedOxygen > Fish.MEDIUM_FISH_MAX_DO
-							|| env.pHchangeInDay > 1.5 && env.mediumFishNum > 0) {
+							|| env.pHchangeInDay > 1.5) && env.mediumFishNum > 0) {
 						env.mediumFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * Fish.DEATH_RATE;
 					} 
+					if (env.dissolvedOxygen == 0 && env.mediumFishNum > 0) {
+						env.mediumFishNum = 0;
+						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * env.mediumFishNum;
+					}
 					if (env.mediumFishNum > 0 && env.pHchangeInDay < 1.5) {
-						env.dissolvedOxygen -= Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
 						env.dissolvedCO2 += Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
+						env.dissolvedOxygen -= Fish.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
 					} 
-					if (env.dissolvedOxygen < Fish.LARGE_FISH_MIN_DO || 
+					if ((env.dissolvedOxygen < Fish.LARGE_FISH_MIN_DO || 
 							env.dissolvedOxygen > Fish.LARGE_FISH_MAX_DO
-							|| env.pHchangeInDay > 1.5 && env.largeFishNum > 0) {
+							|| env.pHchangeInDay > 1.5) && env.largeFishNum > 0) {
 						env.largeFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.LARGE_FISH_MASS * Fish.DEATH_RATE;
 					} 
+					if (env.dissolvedOxygen == 0 && env.largeFishNum > 0) {
+						env.largeFishNum = 0;
+						env.deadOrganismMass += Fish.LARGE_FISH_MASS * env.largeFishNum;
+					}
 					if (env.largeFishNum > 0 && env.pHchangeInDay < 1.5) {
-						env.dissolvedOxygen -= Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
 						env.dissolvedCO2 += Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
+						env.dissolvedOxygen -= Fish.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
 					} 
+					writer.writeToFile("Small Fish:" + String.valueOf(env.getSmallFishNum()) + "," 
+					+ "Medium Fish:" + env.getMediumFishNum() + ","
+					+ "Large Fish:" + env.getLargeFishNum() + ",");
+					System.out.println("Fish data written to file.");
 				}
 			}
 		}
@@ -251,7 +291,7 @@ public class Environment {
 		public static final float DO = 1;
 		public static final int DEATH_RATE = 5; // decomposers per hour
 		public static final int MASS = 1;
-		public static final float RESPIRATION_RATE = (float) 0.025; // of a plant per hour
+		public static final float RESPIRATION_RATE = (float) 0.0025; // of a plant per hour
 		
 		public Decomposers(Environment env) {
 			this.env = env;
@@ -259,18 +299,28 @@ public class Environment {
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while (true) {
+			while(!Clock.clockDone()) {
+				synchronized(env) {
+					try {
+						env.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println("In Decomposers Thread");
 					if (env.dissolvedOxygen < Decomposers.DO && env.decomposersNum > 0) {
 						env.decomposersNum -= Decomposers.DEATH_RATE;
 						env.deadOrganismMass += Decomposers.MASS * Decomposers.DEATH_RATE;
-					} 
-					if (env.deadOrganismMass < 0 && env.decomposersNum > 0) {
+					} if (env.dissolvedOxygen == 0 && env.decomposersNum > 0) {
+						env.decomposersNum = 0;
+						env.deadOrganismMass += Decomposers.MASS * env.decomposersNum;
+					}if (env.deadOrganismMass < 0 && env.decomposersNum > 0) {
 						env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
 																// dead mass by one unit per hour
-						env.dissolvedOxygen -= Decomposers.RESPIRATION_RATE * env.decomposersNum;
 						env.dissolvedCO2 += Decomposers.RESPIRATION_RATE * env.decomposersNum;
+						env.dissolvedOxygen -= Decomposers.RESPIRATION_RATE * env.decomposersNum;					
 					}
+					writer.writeToFile("Decomposers:" + String.valueOf(env.getDecomposersNum()) + ",");
+					System.out.println("Decomposers data written to file.");
 				}
 			}
 		}
@@ -281,8 +331,8 @@ public class Environment {
 		private Environment env;
 		public static final int DEATH_RATE = 1; // plants per hour
 		public static final int MASS = 150;
-		public static final int PHOTOSYNTHESIS_RATE = 2; // O2 produced per hour per plant
-		public static final int CO2_FRACTION_REQ = 3;
+		public static final float PHOTOSYNTHESIS_RATE = (float) 0.1; // O2 produced per hour per plant
+		public static final float CO2_FRACTION_REQ = (float) 0.2;
 		
 		public Plants(Environment env) {
 			this.env = env;
@@ -290,16 +340,30 @@ public class Environment {
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while (true) {
-					if (env.dissolvedCO2 < Plants.CO2_FRACTION_REQ
-							|| env.pHchangeInDay > 2 && env.plantNum > 0) {
+			while(!Clock.clockDone()) {
+				synchronized(env) {
+					try {
+						env.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println("In Plants Thread");
+					if ((env.dissolvedCO2 < Plants.CO2_FRACTION_REQ
+							|| env.pHchangeInDay > 2) && env.plantNum > 0) {
 						env.plantNum -= Plants.DEATH_RATE;
 						env.deadOrganismMass += Plants.MASS * Plants.DEATH_RATE;
 					} 
+					if (env.dissolvedCO2 == 0 && env.plantNum > 0) {
+						env.plantNum = 0;
+						env.deadOrganismMass += Plants.MASS * env.plantNum;
+					}
 					if (env.plantNum > 0 && env.pHchangeInDay < 2) {
 						env.dissolvedOxygen += Plants.PHOTOSYNTHESIS_RATE * env.plantNum;
 					}
+					writer.writeToFile(String.valueOf("Plants:" + env.getPlantNum()) + "," 
+							+ "Oxygen:" + env.getDissolvedOxygen() + "," 
+							+ "CO2:" + env.getdissolvedCO2() + ",");
+					System.out.println("Plant data written to file.");
 				}
 			}
 		}
@@ -317,16 +381,22 @@ public class Environment {
 		}
 		
 		public void run() {
-			synchronized(env) {
-				while (true) {
-					int reactionRate = 0;
+			while(!Clock.clockDone()) {
+				synchronized(env) {
+					try {
+						env.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println("In PH Thread");
+					float reactionRate = 0;
 					try {
 						reactionRate = this.calcCO2ReactionRate();
 					} catch (UnlikelyPHException e) {
 						e.printStackTrace();
 					}
+					env.pH -= reactionRate;
 					if (this.calcTotalPhotosynthesisRate() < this.calcTotalRespirationRate()) {
-						env.pH += reactionRate;
 						if (numTimesRan <= 23) {
 							phChange += reactionRate;
 							numTimesRan++;
@@ -335,18 +405,20 @@ public class Environment {
 							numTimesRan = 0;
 						}
 					} 
+					writer.writeToFile("PH:" + String.valueOf(env.getpH()) + ",");
+					System.out.println("PH data written to file.");
 				}
 			}
 		}
 		
-		private float calcTotalRespirationRate() {
+		private synchronized float calcTotalRespirationRate() {
 			return (Decomposers.RESPIRATION_RATE * (float) env.decomposersNum) + 
 					(Fish.SMALL_FISH_RESPIRATION_RATE * (float) env.smallFishNum) + 
 					(Fish.MEDIUM_FISH_RESPIRATION_RATE * (float) env.mediumFishNum) +
 					(Fish.LARGE_FISH_RESPIRATION_RATE * (float) env.largeFishNum);
 		}
 		
-		private float calcTotalPhotosynthesisRate() {
+		private synchronized float calcTotalPhotosynthesisRate() {
 			return Plants.PHOTOSYNTHESIS_RATE * env.plantNum;
 		}
 		
@@ -355,8 +427,8 @@ public class Environment {
 		 * @return reactionRate
 		 * @throws UnlikelyPHException
 		 */
-		private int calcCO2ReactionRate() throws UnlikelyPHException {
-			int reactionRate = 0;
+		private synchronized float calcCO2ReactionRate() throws UnlikelyPHException {
+			float reactionRate = 0;
 			if (env.pH < 6.4 && env.pH > 0) {
 			} else if (env.pH > 6.4 && env.pH < 10.4) {
 				reactionRate = 1;
@@ -364,7 +436,8 @@ public class Environment {
 				reactionRate = 2;
 			} else {
 				throw new UnlikelyPHException();
-			}
+			} if (env.dissolvedCO2 >= 10)
+				reactionRate += 0.5;
 			return reactionRate;
 		}
 
@@ -376,6 +449,16 @@ public class Environment {
 		System.out.println(t + " started");
 	}
 
+	public void stopThreads() throws InterruptedException {
+		Environment.run = false;
+		Thread.sleep(5000);
+		writer.done();
+		this.join();
+	}
+	
+	public boolean getRun() {
+		return Environment.run;
+	}
 	public synchronized int getHour() {
 		return hour;
 	}
@@ -450,6 +533,10 @@ public class Environment {
 
 	public void setLargeFishNum(int largeFishNum) {
 		this.largeFishNum = largeFishNum;
+	}
+	
+	public WriteToFile getWriter() {
+		return Environment.writer;
 	}
 
 }

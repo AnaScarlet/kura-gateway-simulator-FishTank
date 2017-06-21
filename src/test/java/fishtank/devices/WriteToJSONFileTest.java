@@ -8,27 +8,32 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package test.java.fishtank.environment;
+package test.java.fishtank.devices;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import main.java.fishtank.environment.Environment;
+public class WriteToJSONFileTest {
 
-public class EnvironmentTest {
-	
+	private Object monitor = new Object();
+	private ExampleDevice device = new ExampleDevice(monitor);
+
 	@Test
 	public void main() {
-		Environment env = new Environment(0, 14, 15, 10, 3, 5, 7, 2, 10, 0, 0, 20);
-		try {
-			env.start();
-			Thread.sleep(60000);
-			env.stopThreads();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		synchronized (monitor) {
+			try {
+				monitor.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			Assert.assertTrue(device.writeToFile());
 		}
-		env = null;
-		System.gc();
-		
-		System.out.println("Everything is done and cleaned.");
 	}
+
+	@Test
+	public void testErrorLogPath() {
+		Assert.assertEquals("C:\\Users\\Owner\\git\\kura-gateway-simulator-FishTank\\src\\resources\\ExampleErrorLog.txt",
+				device.getErrorLogFile());
+	}
+	
 }

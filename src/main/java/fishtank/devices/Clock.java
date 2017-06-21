@@ -1,6 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2017 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package main.java.fishtank.devices;
 
 import main.java.fishtank.environment.*;
+import test.java.fishtank.devices.ExampleDevice;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,7 +23,7 @@ public class Clock implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	public static final String errorLogFile = "../resources/ClockErrorLog.txt";
+	public static String errorLogFile = "";
 	
 	private Environment env;
 	private ArrayList<Integer> hoursArray;
@@ -23,6 +34,11 @@ public class Clock implements FishTankDevice {
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
+		this.hoursArray = new ArrayList<Integer>();
+		
+		File errorLog = new File("src/resources/ClockErrorLog.txt");
+		ExampleDevice.errorLogFile = errorLog.getAbsolutePath();
+		
 		try {
 			System.setErr(new PrintStream(Clock.errorLogFile));
 		} catch (FileNotFoundException e) {
@@ -34,7 +50,7 @@ public class Clock implements FishTankDevice {
 	}
 	
 	public void run() {
-		hoursArray = new ArrayList<Integer>();
+		this.isRunning = true;
 		synchronized (env) {
 			while (true) {
 				try {
@@ -44,14 +60,13 @@ public class Clock implements FishTankDevice {
 				}
 				System.out.println("Update received. Uploading data...");
 				hoursArray.add(Integer.valueOf(env.getHour()));
-				this.isRunning = true;
 			}
 		}
 	}
 
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToFile()).writeToFile(this);
+			(new WriteToJSONFile()).writeToFile(this);
 			return true;
 		} return false;
 	}
@@ -83,7 +98,7 @@ public class Clock implements FishTankDevice {
 	}
 
 	public String getErrorLogFile() {
-		return this.errorLogFile;
+		return Clock.errorLogFile;
 	}
 
 	@Override

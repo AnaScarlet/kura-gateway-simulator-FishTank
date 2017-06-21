@@ -1,9 +1,20 @@
+/*******************************************************************************
+ * Copyright (c) 2017 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package test.java.fishtank.devices;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import main.java.fishtank.devices.FishTankDevice;
-import main.java.fishtank.devices.WriteToFile;
+import main.java.fishtank.devices.WriteToJSONFile;
 
 public class ExampleDevice implements FishTankDevice{
 	private boolean isRunning;
@@ -12,15 +23,18 @@ public class ExampleDevice implements FishTankDevice{
 	private final String manufacturer = "This is Us";
 	private final String model = "X";
 	private final Object monitor;
-	public static final String errorLogFile = "C:/Users/Owner/git/kura-gateway-simulator-FishTank/src/resources/ExampleErrorLog.txt";
+	public static String errorLogFile = "";
 	private ArrayList<Integer> data = new ArrayList<Integer>();
 	
 	public ExampleDevice(Object monitor) {
+		File errorLog = new File("src/resources/ExampleErrorLog.txt");
+		ExampleDevice.errorLogFile = errorLog.getAbsolutePath();
 		this.createThread(this, "Example Device Thread");
 		this.monitor = monitor;
 	}
  	
 	public void run(){
+		this.isRunning = true;
 		for (int i = 0; i < 5; i++) {
 			data.add(i);
 			System.out.println(i);
@@ -33,7 +47,7 @@ public class ExampleDevice implements FishTankDevice{
 	
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToFile()).writeToFile(this);
+			(new WriteToJSONFile()).writeToFile(this);
 			return true;
 		} return false;
 	}

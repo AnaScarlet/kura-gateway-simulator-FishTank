@@ -14,11 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import com.google.gson.Gson;
-
-import main.java.fishtank.environment.Environment;
 
 public class WriteToJSONFile {
 	

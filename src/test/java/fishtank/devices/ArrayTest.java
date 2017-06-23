@@ -10,25 +10,33 @@
  *******************************************************************************/
 package test.java.fishtank.devices;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import main.java.fishtank.environment.Environment;
+
 public class ArrayTest {
 	
+	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+
 	private Object monitor = new Object();
 
 	@Test
 	public void main() {
-		ExampleDevice device = new ExampleDevice(monitor);
-		Integer[] array = {0, 1, 2, 3, 4};
 		synchronized (monitor) {
-			try {
-				monitor.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			if (!device.isRunning())
-				Assert.assertArrayEquals(array, device.getData());
+			ExampleDevice device = new ExampleDevice(monitor);
+			Integer[] array = {0, 1, 2, 3, 4};
+			while (device.isRunning())
+				try {
+					monitor.wait();
+				} catch (InterruptedException e) {
+					LOGGER.log(Level.SEVERE, e.toString(), e);
+				}
+				if (!device.isRunning())
+					Assert.assertArrayEquals(array, device.getData());
 		}
 	}
 }

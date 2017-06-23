@@ -3,13 +3,18 @@ package test.java.fishtank.environment;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import main.java.fishtank.environment.Environment;
 import main.java.fishtank.environment.WriteToFile;
 
 public class WriteToFileTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
 
 	@Test
 	public void main() {
@@ -25,7 +30,7 @@ public class WriteToFileTest {
 			} 
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found.");
+			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
 		Assert.assertEquals(data, outputData);
 	}

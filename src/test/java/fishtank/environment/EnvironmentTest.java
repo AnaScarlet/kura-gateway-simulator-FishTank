@@ -10,11 +10,16 @@
  *******************************************************************************/
 package test.java.fishtank.environment;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.junit.Test;
 
 import main.java.fishtank.environment.Environment;
 
 public class EnvironmentTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
 	
 	@Test
 	public void main() {
@@ -24,11 +29,11 @@ public class EnvironmentTest {
 			Thread.sleep(60000);
 			env.stopThreads();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
 		env = null;
 		System.gc();
 		
-		System.out.println("Everything is done and cleaned.");
+		LOGGER.log(Level.FINE, "Everything is done and cleaned.");
 	}
 }

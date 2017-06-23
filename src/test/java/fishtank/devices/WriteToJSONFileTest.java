@@ -10,30 +10,30 @@
  *******************************************************************************/
 package test.java.fishtank.devices;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import main.java.fishtank.environment.Environment;
+
 public class WriteToJSONFileTest {
 
+	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
 	private Object monitor = new Object();
-	private ExampleDevice device = new ExampleDevice(monitor);
-
+	
 	@Test
 	public void main() {
 		synchronized (monitor) {
+			ExampleDevice device = new ExampleDevice(monitor);
 			try {
 				monitor.wait();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				LOGGER.log(Level.SEVERE, e.toString(), e);
 			}
 			Assert.assertTrue(device.writeToFile());
 		}
 	}
 
-	@Test
-	public void testErrorLogPath() {
-		Assert.assertEquals("C:\\Users\\Owner\\git\\kura-gateway-simulator-FishTank\\src\\resources\\ExampleErrorLog.txt",
-				device.getErrorLogFile());
-	}
-	
 }

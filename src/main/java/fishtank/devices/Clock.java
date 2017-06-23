@@ -11,19 +11,20 @@
 package main.java.fishtank.devices;
 
 import main.java.fishtank.environment.*;
-import test.java.fishtank.devices.ExampleDevice;
 
-import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Clock implements FishTankDevice {
 
+	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	
 	private boolean isRunning;
 	private final String id;
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	public static String errorLogFile = "";
 	
 	private Environment env;
 	private ArrayList<Integer> hoursArray;
@@ -36,15 +37,6 @@ public class Clock implements FishTankDevice {
 		this.model = model;
 		this.hoursArray = new ArrayList<Integer>();
 		
-		File errorLog = new File("src/resources/ClockErrorLog.txt");
-		ExampleDevice.errorLogFile = errorLog.getAbsolutePath();
-		
-		try {
-			System.setErr(new PrintStream(Clock.errorLogFile));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
 		this.env = env;
 		this.createThread(this, "Clock Device Thread");
 	}
@@ -56,9 +48,9 @@ public class Clock implements FishTankDevice {
 				try {
 					env.wait();
 				} catch (InterruptedException e) {
-					System.err.println(e);
+					LOGGER.log(Level.SEVERE, e.toString(), e);
 				}
-				System.out.println("Update received. Uploading data...");
+				LOGGER.log(Level.INFO, "Update received. Uploading data...");
 				hoursArray.add(Integer.valueOf(env.getHour()));
 			}
 		}
@@ -74,7 +66,7 @@ public class Clock implements FishTankDevice {
 	private void createThread(Runnable obj, String threadName) {
 		Thread t = new Thread(obj, threadName);
 		t.start();
-		System.out.println(t + " started");
+		LOGGER.log(Level.INFO, t.getName() + " started", t);
 	}
 	
 	public boolean isRunning() {
@@ -95,10 +87,6 @@ public class Clock implements FishTankDevice {
 
 	public String getModel() {
 		return this.model;
-	}
-
-	public String getErrorLogFile() {
-		return Clock.errorLogFile;
 	}
 
 	@Override

@@ -10,34 +10,43 @@
  *******************************************************************************/
 package test.java.fishtank.devices;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import main.java.fishtank.devices.FishTankDevice;
 import main.java.fishtank.devices.WriteToJSONFile;
+import main.java.fishtank.environment.Environment;
 
 public class ExampleDevice implements FishTankDevice{
+	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+
 	private boolean isRunning;
 	private final String id = "ABC123";
 	private final String name = "The Device";
 	private final String manufacturer = "This is Us";
 	private final String model = "X";
-	private final Object monitor;
-	public static String errorLogFile = "";
+	private Object monitor = null;
 	private ArrayList<Integer> data = new ArrayList<Integer>();
 	
 	public ExampleDevice(Object monitor) {
-		File errorLog = new File("src/resources/ExampleErrorLog.txt");
-		ExampleDevice.errorLogFile = errorLog.getAbsolutePath();
 		this.createThread(this, "Example Device Thread");
-		this.monitor = monitor;
+		if (monitor != null)	
+			this.monitor = monitor;
+		else
+			LOGGER.warning("Monitor object parameter was null.");
 	}
  	
+	public ExampleDevice() {
+		this.createThread(this, "Example Device Thread");
+		this.monitor = new Object();
+	}
+	
 	public void run(){
 		this.isRunning = true;
 		for (int i = 0; i < 5; i++) {
 			data.add(i);
-			System.out.println(i);
+			LOGGER.log(Level.FINE, "Data point: " + i , i);
 		}
 		this.isRunning = false;
 		synchronized(monitor) {
@@ -55,6 +64,7 @@ public class ExampleDevice implements FishTankDevice{
 	private void createThread(Runnable obj, String threadName) {
 		Thread t = new Thread(obj, threadName);
 		t.start();
+		LOGGER.log(Level.INFO, t.getName() + " started", t);
 	}
 	
 	public boolean isRunning() {
@@ -71,9 +81,6 @@ public class ExampleDevice implements FishTankDevice{
 	}
 	public String getModel() {
 		return this.model;
-	}
-	public String getErrorLogFile() {
-		return errorLogFile;
 	}
 	public Integer[] getData() {
 		Integer[] a = {1};

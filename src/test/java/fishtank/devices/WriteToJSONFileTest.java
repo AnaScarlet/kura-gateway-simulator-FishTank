@@ -21,7 +21,7 @@ import main.java.fishtank.environment.Environment;
 public class WriteToJSONFileTest {
 
 	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
-	private Object monitor = new Object();
+	private final Object monitor = new Object();
 	
 	@Test
 	public void main() {

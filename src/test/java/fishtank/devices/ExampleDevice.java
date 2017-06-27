@@ -44,6 +44,7 @@ public class ExampleDevice implements FishTankDevice{
 	
 	public void run(){
 		this.isRunning = true;
+		LOGGER.info("In run method of ExampleDevice");
 		for (int i = 0; i < 5; i++) {
 			data.add(i);
 			LOGGER.log(Level.FINE, "Data point: " + i , i);

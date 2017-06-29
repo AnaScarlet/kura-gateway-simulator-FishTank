@@ -128,12 +128,12 @@ public class Environment extends Thread {
 				synchronized(env) {
 					writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
 					LOGGER.log(Level.FINE, "Clock data written to file.");
-					LOGGER.log(Level.INFO, "Cycle complete.");
 					this.clockDone = true;
 					this.env.notifyAll();
 				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
-				} LOGGER.log(Level.INFO, "Cycle complete.");
+				} 
+				LOGGER.log(Level.INFO, "Cycle complete.");
 			}
 		}
 		

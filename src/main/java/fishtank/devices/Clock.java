@@ -25,17 +25,20 @@ public class Clock implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
+	private Object monitor;
 	
 	private Environment env;
 	private ArrayList<Integer> hoursArray;
 	
 	
-	public Clock(final String id, final String name, final String manufacturer, final String model, final Environment env){
+	public Clock(final String id, final String name, final String manufacturer, final String model, 
+			final Environment env, final Object monitor){
 		this.id = id;
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.hoursArray = new ArrayList<Integer>();
+		this.monitor = monitor;
 		
 		this.env = env;
 		this.createThread(this, "Clock Device Thread");
@@ -43,10 +46,10 @@ public class Clock implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		synchronized (env) {
+		synchronized (this.monitor) {
 			while (true) {
 				try {
-					env.wait();
+					this.monitor.wait();
 				} catch (InterruptedException e) {
 					LOGGER.log(Level.SEVERE, e.toString(), e);
 				}

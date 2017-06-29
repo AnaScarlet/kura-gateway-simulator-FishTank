@@ -15,17 +15,20 @@ public class CO2Meter implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
+	private Object monitor;
 	
 	private Environment env;
-	private ArrayList<Integer> airArray;
+	private ArrayList<Float> airArray;
 	
 	
-	public CO2Meter(final String id, final String name, final String manufacturer, final String model, final Environment env){
+	public CO2Meter(final String id, final String name, final String manufacturer, final String model, 
+			final Environment env, final Object monitor){
 		this.id = id;
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
-		this.airArray = new ArrayList<Integer>();
+		this.airArray = new ArrayList<Float>();
+		this.monitor = monitor;
 		
 		this.env = env;
 		this.createThread(this, "CO2 Meter Device Thread");
@@ -33,15 +36,15 @@ public class CO2Meter implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		synchronized (env) {
+		synchronized (this.monitor) {
 			while (true) {
 				try {
-					env.wait();
+					this.monitor.wait();
 				} catch (InterruptedException e) {
 					LOGGER.log(Level.SEVERE, e.toString(), e);
 				}
 				LOGGER.log(Level.INFO, "Update received. Uploading data...");
-				airArray.add(Integer.valueOf(env.getHour()));
+				airArray.add(Float.valueOf(env.getDissolvedCO2()));
 			}
 		}
 	}

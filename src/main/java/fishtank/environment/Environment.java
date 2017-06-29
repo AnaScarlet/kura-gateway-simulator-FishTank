@@ -36,6 +36,15 @@ public class Environment extends Thread {
 	private static WriteToFile writer;
 	private static boolean run;
 	
+	private Clock clock;
+	private AirTemperature airTemp;
+	private WaterTemperature waterTemp;
+	private Fish fish;
+	private Decomposers decomposers;
+	private Plants plants;
+	private PH pH_obj;
+	private Gases gases;
+		
 	public static final float SMALL_FISH_MIN_DO = 2; // DO - dissolved oxygen in mg/L. 
 	public static final float MEDIUM_FISH_MIN_DO = 6;
 	public static final float LARGE_FISH_MIN_DO = 10;
@@ -75,14 +84,14 @@ public class Environment extends Thread {
 		
 		LOGGER.log(Level.FINE, "Preparations complete.");
 		
-		new Clock(this, this.hour);
-		new AirTemperature(this);
-		new WaterTemperature(this);
-		new Fish(this);
-		new Decomposers(this);
-		new Plants(this);
-		new PH(this);
-		new Gases(this);
+		this.clock = new Clock(this, this.hour);
+		this.airTemp = new AirTemperature(this);
+		this.waterTemp = new WaterTemperature(this);
+		this.fish = new Fish(this);
+		this.decomposers = new Decomposers(this);
+		this.plants = new Plants(this);
+		this.pH_obj = new PH(this);
+		this.gases = new Gases(this);
 		
 		LOGGER.log(Level.FINE, "Threads started.");		
 	}
@@ -93,10 +102,12 @@ public class Environment extends Thread {
 		protected int interval;
 		private Environment env;
 		private Calendar cal = Calendar.getInstance();
-		private static boolean clockDone = false;
+		private boolean clockDone = false;
+		private Object deviceMonitor;
 		
 		public Clock(final Environment env, final int hour) {
 			this.env = env;
+			deviceMonitor = new Object();
 			setHour(hour);
 			setINTERVAL();
 			
@@ -117,14 +128,15 @@ public class Environment extends Thread {
 				synchronized(env) {
 					writer.writeToFile("Hour:" + String.valueOf(env.getHour()) + ",");
 					LOGGER.log(Level.FINE, "Clock data written to file.");
-					clockDone = true;
-					env.notifyAll();
+					this.clockDone = true;
+					this.env.notifyAll();
+					this.deviceMonitor.notifyAll();
 				}
 			}
 		}
 		
 		public synchronized void setHour() {
-			env.hour = cal.get(Calendar.HOUR_OF_DAY);
+			this.env.hour = cal.get(Calendar.HOUR_OF_DAY);
 		}
 		
 		public  synchronized void setHour(final int hour) {
@@ -136,8 +148,12 @@ public class Environment extends Thread {
 			this.interval = MILLISEC / env.timeSpeed;
 		}
 
-		public static boolean clockDone(){
-			return clockDone;
+		public boolean clockDone(){
+			return this.clockDone;
+		}
+		
+		public Object getMonitor() {
+			return this.deviceMonitor;
 		}
 		
 	}
@@ -145,15 +161,17 @@ public class Environment extends Thread {
 	private class AirTemperature implements Runnable {
 		
 		private Environment env;
+		private Object deviceMonitor;
 		private int rate = 1; // in Celsius per hour
 		
 		public AirTemperature(Environment env) {
 			this.env = env;
+			deviceMonitor = new Object();
 			env.createThread(this, "Air Temperature Thread");
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -168,12 +186,17 @@ public class Environment extends Thread {
 					}
 					writer.writeToFile("Air Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
 					LOGGER.log(Level.FINE, "Air Temperature data written to file.");
+					this.deviceMonitor.notifyAll();
 				}
 			}
 		}
 		
 		public synchronized void increase (int rate) {
-			env.airTemperature += rate;
+			this.env.airTemperature += rate;
+		}
+		
+		public Object getMonitor() {
+			return this.deviceMonitor;
 		}
 
 	}
@@ -181,15 +204,17 @@ public class Environment extends Thread {
 	private class WaterTemperature implements Runnable {
 		
 		private Environment env;
+		private Object deviceMonitor;
 		private int rate = 1; // in Celsius per hour
 		
 		public WaterTemperature(Environment env) {
 			this.env = env;	
+			this.deviceMonitor = new Object();
 			env.createThread(this, "Water Temperature Thread");
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -204,12 +229,17 @@ public class Environment extends Thread {
 					}
 					writer.writeToFile("Water Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
 					LOGGER.log(Level.FINE, "Water Temperature data written to file.");
+					this.deviceMonitor.notifyAll();
 				}
 			}
 		}
 		
 		private synchronized void increase (int rate) {
-			env.waterTemperature += rate;
+			this.env.waterTemperature += rate;
+		}
+		
+		public Object getMonitor() {
+			return this.deviceMonitor;
 		}
 
 	}
@@ -235,7 +265,7 @@ public class Environment extends Thread {
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -295,7 +325,7 @@ public class Environment extends Thread {
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -332,7 +362,7 @@ public class Environment extends Thread {
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -360,16 +390,18 @@ public class Environment extends Thread {
 	
 	private class PH implements Runnable {
 		private Environment env;
+		private Object deviceMonitor;
 		private int phChange = 0;
 		private int numTimesRan = 0;
 		
 		public PH(Environment env) {
 			this.env = env;
+			deviceMonitor = new Object();
 			env.createThread(this, "pH Thread");
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -393,8 +425,9 @@ public class Environment extends Thread {
 							numTimesRan = 0;
 						}
 					} 
-					writer.writeToFile("PH:" + String.valueOf(env.getpH()) + ",");
+					writer.writeToFile("PH:" + String.valueOf(env.getPH()) + ",");
 					LOGGER.log(Level.FINE, "PH data written to file.");
+					this.deviceMonitor.notifyAll();
 				}
 			}
 		}
@@ -428,20 +461,26 @@ public class Environment extends Thread {
 				reactionRate += 0.5;
 			return reactionRate;
 		}
+		
+		public Object getMonitor() {
+			return this.deviceMonitor;
+		}
 
 	}
 	
 	private class Gases implements Runnable {
 		
 		private Environment env;
+		private Object deviceMonitor;
 		
 		public Gases(Environment env) {
 			this.env =  env;
+			deviceMonitor = new Object();
 			env.createThread(this, "Gases Thread");
 		}
 		
 		public void run() {
-			while(!Clock.clockDone()) {
+			while(!clock.clockDone()) {
 				synchronized(env) {
 					try {
 						env.wait();
@@ -469,11 +508,16 @@ public class Environment extends Thread {
 						env.dissolvedOxygen -= Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;					
 					}
 					writer.writeToFile(String.valueOf("Oxygen:" + env.getDissolvedOxygen() + "," 
-							+ "CO2:" + env.getdissolvedCO2() + ","));
+							+ "CO2:" + env.getDissolvedCO2() + ","));
 					
 					LOGGER.log(Level.FINE, "Gases data written to file.");
+					this.deviceMonitor.notifyAll();
 				}
 			}			
+		}
+		
+		public Object getMonitor() {
+			return this.deviceMonitor;
 		}
 	}
 	
@@ -490,57 +534,97 @@ public class Environment extends Thread {
 		this.join();
 	}
 	
+	public void makeClockDevice(final String id, final String name, final String manufacturer, final String model) {
+		new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this, clock.getMonitor());
+	}
+	
+	public void makeAirThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
+		new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this, airTemp.getMonitor());
+	}	
+	
+	public void makeWaterThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
+		new main.java.fishtank.devices.WaterThermometer(id, name, manufacturer, model, this, waterTemp.getMonitor());
+	}
+	
+	public void makeOxygenMeterDevice(final String id, final String name, final String manufacturer, final String model) {
+		new main.java.fishtank.devices.OxygenMeter(id, name, manufacturer, model, this, gases.getMonitor());
+	}
+	
+	public void makeCO2MeterDevice(final String id, final String name, final String manufacturer, final String model) {
+		new main.java.fishtank.devices.CO2Meter(id, name, manufacturer, model, this, gases.getMonitor());
+	}
+	
+	public void makePHMeterDevice(final String id, final String name, final String manufacturer, final String model) {
+		new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this, pH_obj.getMonitor());
+	}
+	
 	public boolean getRun() {
 		return Environment.run;
 	}
+	
 	public synchronized int getHour() {
 		return hour;
 	}
+	
 	public synchronized int getAirTemperature() {
 		return airTemperature;
 	}
+	
 	public void setAirTemperature(int airTemperature) {
 		this.airTemperature = airTemperature;
 	}
+	
 	public synchronized int getWaterTemperature() {
 		return waterTemperature;
 	}
+	
 	public void setWaterTemperature(int waterTemperature) {
 		this.waterTemperature = waterTemperature;
 	}
+	
 	public synchronized int getTimeSpeed() {
 		return timeSpeed;
 	}
+	
 	public void setTimeSpeed(int timeSpeed) {
 		this.timeSpeed = timeSpeed;
 	}
-	public synchronized float getdissolvedCO2() {
+	public synchronized float getDissolvedCO2() {
 		return dissolvedCO2;
 	}
-	public void setdissolvedCO2(float dissolvedCO2) {
+	
+	public void setDissolvedCO2(float dissolvedCO2) {
 		this.dissolvedCO2 = dissolvedCO2;
 	}
+	
 	public synchronized float getDissolvedOxygen() {
 		return dissolvedOxygen;
 	}
+	
 	public void setDissolvedOxygen(float dissolvedOxygen) {
 		this.dissolvedOxygen = dissolvedOxygen;
 	}
-	public synchronized float getpH() {
+	
+	public synchronized float getPH() {
 		return pH;
 	}
+	
 	public void setpH(float pH) {
 		this.pH = pH;
 	}
+	
 	public synchronized int getPlantNum() {
 		return plantNum;
 	}
+	
 	public void setPlantNum(int plantNum) {
 		this.plantNum = plantNum;
 	}
+	
 	public synchronized int getDecomposersNum() {
 		return decomposersNum;
 	}
+	
 	public void setDecomposersNum(int decomposersNum) {
 		this.decomposersNum = decomposersNum;
 	}

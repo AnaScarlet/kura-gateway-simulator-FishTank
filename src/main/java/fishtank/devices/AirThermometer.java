@@ -15,17 +15,20 @@ public class AirThermometer implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
+	private Object monitor;
 	
 	private Environment env;
 	private ArrayList<Integer> tempArray;
 	
 	
-	public AirThermometer(final String id, final String name, final String manufacturer, final String model, final Environment env){
+	public AirThermometer(final String id, final String name, final String manufacturer, final String model, 
+			final Environment env, final Object monitor){
 		this.id = id;
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.tempArray = new ArrayList<Integer>();
+		this.monitor = monitor;
 		
 		this.env = env;
 		this.createThread(this, "Air Thermometer Device Thread");
@@ -33,15 +36,15 @@ public class AirThermometer implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		synchronized (env) {
+		synchronized (this.monitor) {
 			while (true) {
 				try {
-					env.wait();
+					this.monitor.wait();
 				} catch (InterruptedException e) {
 					LOGGER.log(Level.SEVERE, e.toString(), e);
 				}
 				LOGGER.log(Level.INFO, "Update received. Uploading data...");
-				tempArray.add(Integer.valueOf(env.getHour()));
+				tempArray.add(Integer.valueOf(env.getAirTemperature()));
 			}
 		}
 	}

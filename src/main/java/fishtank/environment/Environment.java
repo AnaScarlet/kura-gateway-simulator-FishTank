@@ -126,12 +126,14 @@ public class Environment extends Thread {
 				cal.roll(Calendar.HOUR_OF_DAY, true);
 				setHour();
 				synchronized(env) {
-					writer.writeToFile("Hour:" + String.valueOf(env.getHour()) + ",");
+					writer.writeToFile("\nHour:" + String.valueOf(env.getHour()) + ",");
 					LOGGER.log(Level.FINE, "Clock data written to file.");
+					LOGGER.log(Level.INFO, "Cycle complete.");
 					this.clockDone = true;
 					this.env.notifyAll();
+				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
-				}
+				} LOGGER.log(Level.INFO, "Cycle complete.");
 			}
 		}
 		
@@ -186,6 +188,7 @@ public class Environment extends Thread {
 					}
 					writer.writeToFile("Air Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
 					LOGGER.log(Level.FINE, "Air Temperature data written to file.");
+				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
 				}
 			}
@@ -229,6 +232,7 @@ public class Environment extends Thread {
 					}
 					writer.writeToFile("Water Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
 					LOGGER.log(Level.FINE, "Water Temperature data written to file.");
+				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
 				}
 			}
@@ -427,6 +431,7 @@ public class Environment extends Thread {
 					} 
 					writer.writeToFile("PH:" + String.valueOf(env.getPH()) + ",");
 					LOGGER.log(Level.FINE, "PH data written to file.");
+				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
 				}
 			}
@@ -511,6 +516,7 @@ public class Environment extends Thread {
 							+ "CO2:" + env.getDissolvedCO2() + ","));
 					
 					LOGGER.log(Level.FINE, "Gases data written to file.");
+				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
 				}
 			}			

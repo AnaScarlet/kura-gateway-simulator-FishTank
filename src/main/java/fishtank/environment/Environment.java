@@ -126,7 +126,7 @@ public class Environment extends Thread {
 				cal.roll(Calendar.HOUR_OF_DAY, true);
 				setHour();
 				synchronized(env) {
-					writer.writeToFile("\nHour:" + String.valueOf(env.getHour()) + ",");
+					writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
 					LOGGER.log(Level.FINE, "Clock data written to file.");
 					LOGGER.log(Level.INFO, "Cycle complete.");
 					this.clockDone = true;
@@ -186,7 +186,7 @@ public class Environment extends Thread {
 					} else if (this.env.hour > 6 && this.env.hour < 10) {
 						this.increase(- this.rate);
 					}
-					writer.writeToFile("Air Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
+					writer.writeToFile("\nAir Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
 					LOGGER.log(Level.FINE, "Air Temperature data written to file.");
 				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
@@ -230,7 +230,7 @@ public class Environment extends Thread {
 					} else if (env.airTemperature < env.waterTemperature) {
 						this.increase(- this.rate);
 					}
-					writer.writeToFile("Water Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
+					writer.writeToFile("\nWater Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
 					LOGGER.log(Level.FINE, "Water Temperature data written to file.");
 				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
@@ -307,9 +307,9 @@ public class Environment extends Thread {
 						env.largeFishNum -= Fish.DEATH_RATE;
 						env.deadOrganismMass += Fish.LARGE_FISH_MASS * Fish.DEATH_RATE;
 					} 
-					writer.writeToFile("Small Fish:" + String.valueOf(env.getSmallFishNum()) + "," 
-					+ "Medium Fish:" + env.getMediumFishNum() + ","
-					+ "Large Fish:" + env.getLargeFishNum() + ",");
+					writer.writeToFile("\nSmall Fish:" + String.valueOf(env.getSmallFishNum()) + "," 
+					+ "\nMedium Fish:" + env.getMediumFishNum() + ","
+					+ "\nLarge Fish:" + env.getLargeFishNum() + ",");
 					LOGGER.log(Level.FINE, "Fish data written to file.");
 				}
 			}
@@ -347,7 +347,7 @@ public class Environment extends Thread {
 						env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
 																// dead mass by one unit per hour					
 					}
-					writer.writeToFile("Decomposers:" + String.valueOf(env.getDecomposersNum()) + ",");
+					writer.writeToFile("\nDecomposers:" + String.valueOf(env.getDecomposersNum()) + ",");
 					LOGGER.log(Level.FINE, "Decomposers data written to file.");
 				}
 			}
@@ -383,7 +383,7 @@ public class Environment extends Thread {
 						env.plantNum -= Plants.DEATH_RATE;
 						env.deadOrganismMass += Plants.MASS * Plants.DEATH_RATE;
 					} 
-					writer.writeToFile(String.valueOf("Plants:" + env.getPlantNum()) + ",");
+					writer.writeToFile(String.valueOf("\nPlants:" + env.getPlantNum()) + ",");
 					
 					LOGGER.log(Level.FINE, "Plant data written to file.");
 				}
@@ -429,7 +429,7 @@ public class Environment extends Thread {
 							numTimesRan = 0;
 						}
 					} 
-					writer.writeToFile("PH:" + String.valueOf(env.getPH()) + ",");
+					writer.writeToFile("\nPH:" + String.valueOf(env.getPH()) + ",");
 					LOGGER.log(Level.FINE, "PH data written to file.");
 				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
@@ -512,8 +512,8 @@ public class Environment extends Thread {
 						env.dissolvedCO2 += Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;
 						env.dissolvedOxygen -= Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;					
 					}
-					writer.writeToFile(String.valueOf("Oxygen:" + env.getDissolvedOxygen() + "," 
-							+ "CO2:" + env.getDissolvedCO2() + ","));
+					writer.writeToFile(String.valueOf("\nOxygen:" + env.getDissolvedOxygen() + "," 
+							+ "\nCO2:" + env.getDissolvedCO2() + ","));
 					
 					LOGGER.log(Level.FINE, "Gases data written to file.");
 				} synchronized (this.deviceMonitor) {

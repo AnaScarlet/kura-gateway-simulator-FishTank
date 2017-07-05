@@ -18,20 +18,20 @@ public class Environment extends Thread {
 	
 	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
 	
-	private volatile int hour = 0; // 24-hour format
-	private volatile int airTemperature = 0; // in Celsius by default
-	private volatile int waterTemperature = 0; // in Celsius by default
-	private int timeSpeed = 1; // ex: x2, x3, x10, where 0 is time stopped
-	private float dissolvedCO2 = (float) 0.0;
-	private volatile float dissolvedOxygen = (float) 0.0;
-	private float pH = (float) 7.0;
-	private volatile float pHchangeInDay = 0;
-	private int plantNum = 0;
-	private int decomposersNum = 0;
-	private int smallFishNum = 0;
-	private int mediumFishNum = 0;
-	private int largeFishNum = 0;
-	private volatile int deadOrganismMass = 0;
+	private volatile int hour; // 24-hour format
+	private volatile int airTemperature; // in Celsius by default
+	private volatile int waterTemperature; // in Celsius by default
+	private int timeSpeed; // ex: x2, x3, x10, where 0 is time stopped
+	private float dissolvedCO2;
+	private volatile float dissolvedOxygen;
+	private float pH;
+	private volatile float pHchangeInDay;
+	private int plantNum;
+	private int decomposersNum;
+	private int smallFishNum;
+	private int mediumFishNum;
+	private int largeFishNum;
+	private volatile int deadOrganismMass;
 
 	private static WriteToFile writer;
 	private static boolean run;
@@ -75,7 +75,15 @@ public class Environment extends Thread {
 		this.mediumFishNum = mediumFishNum;
 		this.largeFishNum = largeFishNum;
 		this.decomposersNum = decomposersNum;
-
+		this.deadOrganismMass = 0;
+		this.pHchangeInDay = 0;
+	}
+	
+	/**
+	 * Sets variables to default values (no fish or plants). 
+	 */
+	public Environment() {
+		this(0, 25, 25, 1, (float) 5, (float) 5, (float) 7, 0, 0, 0, 0, 20);
 	}
 	
 	public void run() {
@@ -123,9 +131,9 @@ public class Environment extends Thread {
 				} catch (InterruptedException e) {
 					LOGGER.log(Level.SEVERE, e.toString(), e);
 				}
-				cal.roll(Calendar.HOUR_OF_DAY, true);
-				setHour();
 				synchronized(env) {
+					cal.roll(Calendar.HOUR_OF_DAY, true);
+					setHour();
 					writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
 					LOGGER.log(Level.FINE, "Clock data written to file.");
 					this.clockDone = true;
@@ -133,7 +141,7 @@ public class Environment extends Thread {
 				} synchronized (this.deviceMonitor) {
 					this.deviceMonitor.notifyAll();
 				} 
-				LOGGER.log(Level.INFO, "Cycle complete.");
+				LOGGER.log(Level.INFO, "Cycle " + (env.hour + 1) + " complete.");
 			}
 		}
 		
@@ -572,6 +580,10 @@ public class Environment extends Thread {
 		return hour;
 	}
 	
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+	
 	public synchronized int getAirTemperature() {
 		return airTemperature;
 	}
@@ -661,6 +673,14 @@ public class Environment extends Thread {
 	
 	public WriteToFile getWriter() {
 		return Environment.writer;
+	}
+	
+	public String toString() {
+		return "Air Temperature: " + this.getAirTemperature() + ", Decomposers:" + this.getDecomposersNum()
+			+ ", Dossolved CO2:" + this.getDissolvedCO2() + ", Dissolved Oxygen:" + this.getDissolvedOxygen()
+			+ ", Hour:" + this.getHour() + ", Large Fish:" + this.getLargeFishNum()  + ", Medium Fish:" + this.getMediumFishNum()
+			+ ", Small Fish:" + this.getSmallFishNum() + ", PH:" + this.getPH() + ", Plants:" + this.getPlantNum() 
+			+ ", Time Speed:" + this.getTimeSpeed() + ", Water Temperature:" + this.getWaterTemperature();
 	}
 
 }

@@ -10,34 +10,65 @@
  *******************************************************************************/
 package main.java.fishtank.devices;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import main.java.fishtank.environment.Environment;
+import resources.GsonDeserializer;
+import resources.GsonSerializer;
 
 public class WriteToJSONFile {
 	
 	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	private Gson gson;
 	
-	public static final String dataFilePath = "C:/Users/Owner/git/kura-gateway-simulator-FishTank/src/resources/jsonData.json";
+	public String dataFilePath;
+	
+	public WriteToJSONFile() {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		gsonBuilder.registerTypeAdapter(Environment.class, new GsonSerializer());
+		gsonBuilder.registerTypeAdapter(Environment.class, new GsonDeserializer());
+		gsonBuilder.setPrettyPrinting();
+		this.gson= gsonBuilder.create();
+		this.dataFilePath = new File("src/resources/jsonData.json").getAbsolutePath();
+	}
+	
+	public WriteToJSONFile(final String filePath) {
+		this.setDataFilePath(filePath);
+	}
 
-	public void writeToFile (FishTankDevice obj) {
-		Gson gson = new Gson();
-		String gsonRepr = gson.toJson(obj);
+	public void writeToFile (final FishTankDevice obj) {
+		final String gsonRepr = this.gson.toJson(obj);
 		LOGGER.log(Level.INFO, "Object converted to JSON representation.", gsonRepr);
-
+		this.writeData(gsonRepr);
+	}
+	
+	public void writeToFile (final Environment obj) {
+		String gsonRepr = this.gson.toJson(obj);
+		LOGGER.log(Level.INFO, "Object converted to JSON representation.", gsonRepr);
+		this.writeData(gsonRepr);
+	}
+	
+	private void writeData(final String gsonRepr) {
 		try {
-			FileWriter writer = new FileWriter(WriteToJSONFile.dataFilePath);
+			final FileWriter writer = new FileWriter(this.dataFilePath);
 			writer.write(gsonRepr);
 			LOGGER.log(Level.INFO, "Object written to file.");
 			writer.close();
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
+	}
+
+	public void setDataFilePath(final String filePath) {
+		this.dataFilePath = filePath;
+		LOGGER.log(Level.INFO, "Data file path set to: " + this.dataFilePath, this.dataFilePath);
 	}
 
 }

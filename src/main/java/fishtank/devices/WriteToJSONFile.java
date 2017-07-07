@@ -11,8 +11,10 @@
 package main.java.fishtank.devices;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +27,7 @@ import resources.GsonSerializer;
 
 public class WriteToJSONFile {
 	
-	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(WriteToJSONFile.class.getName());
 	private Gson gson;
 	
 	public String dataFilePath;
@@ -66,6 +68,21 @@ public class WriteToJSONFile {
 		}
 	}
 
+	public Environment getData() {
+		String jsonStringRepr = "";
+		try (Scanner scanner = new Scanner(new File(this.dataFilePath))) {
+			while (scanner.hasNextLine()){
+				jsonStringRepr += scanner.nextLine();
+				LOGGER.info(jsonStringRepr);
+			} 
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			LOGGER.log(Level.SEVERE, e.toString(), e);
+		}
+		
+		return this.gson.fromJson(jsonStringRepr, Environment.class);
+	}
+	
 	public void setDataFilePath(final String filePath) {
 		this.dataFilePath = filePath;
 		LOGGER.log(Level.INFO, "Data file path set to: " + this.dataFilePath, this.dataFilePath);

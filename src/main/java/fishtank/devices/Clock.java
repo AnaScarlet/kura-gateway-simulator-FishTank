@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class Clock implements FishTankDevice {
 
-	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Clock.class.getName());
 	
 	private boolean isRunning;
 	private final String id;
@@ -61,7 +61,9 @@ public class Clock implements FishTankDevice {
 
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToJSONFile()).writeToFile(this);
+			WriteToJSONFile writer = new WriteToJSONFile();
+			writer.setDataFilePath("src/resources/clock-data.json");
+			writer.writeToFile(this);			
 			return true;
 		} return false;
 	}
@@ -74,6 +76,10 @@ public class Clock implements FishTankDevice {
 	
 	public boolean isRunning() {
 		return this.isRunning;
+	}
+	
+	public void setIsRunning(boolean runningValue) {
+		this.isRunning = runningValue;
 	}
 
 	public String getID() {

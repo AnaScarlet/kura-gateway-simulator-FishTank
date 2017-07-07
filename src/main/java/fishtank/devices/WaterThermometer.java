@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 import main.java.fishtank.environment.Environment;
 
 public class WaterThermometer implements FishTankDevice {
-	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	
+	private static final Logger LOGGER = Logger.getLogger(WaterThermometer.class.getName());
 	
 	private boolean isRunning;
 	private final String id;
@@ -50,7 +51,9 @@ public class WaterThermometer implements FishTankDevice {
 
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToJSONFile()).writeToFile(this);
+			WriteToJSONFile writer = new WriteToJSONFile();
+			writer.setDataFilePath("src/resources/water-thermometer-data.json");
+			writer.writeToFile(this);
 			return true;
 		} return false;
 	}
@@ -63,6 +66,10 @@ public class WaterThermometer implements FishTankDevice {
 	
 	public boolean isRunning() {
 		return this.isRunning;
+	}
+
+	public void setIsRunning(boolean runningValue) {
+		this.isRunning = runningValue;
 	}
 
 	public String getID() {

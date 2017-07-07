@@ -8,7 +8,7 @@ import main.java.fishtank.environment.Environment;
 
 public class PHMeter implements FishTankDevice {
 
-	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(PHMeter.class.getName());
 	
 	private boolean isRunning;
 	private final String id;
@@ -51,7 +51,9 @@ public class PHMeter implements FishTankDevice {
 
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToJSONFile()).writeToFile(this);
+			WriteToJSONFile writer = new WriteToJSONFile();
+			writer.setDataFilePath("src/resources/ph-meter-data.json");
+			writer.writeToFile(this);
 			return true;
 		} return false;
 	}
@@ -64,6 +66,10 @@ public class PHMeter implements FishTankDevice {
 	
 	public boolean isRunning() {
 		return this.isRunning;
+	}
+
+	public void setIsRunning(boolean runningValue) {
+		this.isRunning = runningValue;
 	}
 
 	public String getID() {

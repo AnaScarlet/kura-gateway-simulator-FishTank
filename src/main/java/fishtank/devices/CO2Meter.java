@@ -8,7 +8,7 @@ import main.java.fishtank.environment.Environment;
 
 public class CO2Meter implements FishTankDevice {
 
-	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(CO2Meter.class.getName());
 	
 	private boolean isRunning;
 	private final String id;
@@ -51,7 +51,9 @@ public class CO2Meter implements FishTankDevice {
 
 	public boolean writeToFile() {
 		if (!this.isRunning) {
-			(new WriteToJSONFile()).writeToFile(this);
+			WriteToJSONFile writer = new WriteToJSONFile();
+			writer.setDataFilePath("src/resources/co2-meter-data.json");
+			writer.writeToFile(this);
 			return true;
 		} return false;
 	}
@@ -68,6 +70,10 @@ public class CO2Meter implements FishTankDevice {
 
 	public String getID() {
 		return this.id;
+	}
+
+	public void setIsRunning(boolean runningValue) {
+		this.isRunning = runningValue;
 	}
 
 	public String getName() {

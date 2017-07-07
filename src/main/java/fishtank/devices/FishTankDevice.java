@@ -16,6 +16,8 @@ public interface FishTankDevice extends Runnable {
 	
 	public boolean isRunning();
 	
+	public void setIsRunning(boolean runningValue);
+	
 	public String getID();
 	
 	public String getName();

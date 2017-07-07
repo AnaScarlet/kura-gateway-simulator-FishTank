@@ -16,10 +16,10 @@ import java.util.logging.Logger;
 
 import main.java.fishtank.devices.FishTankDevice;
 import main.java.fishtank.devices.WriteToJSONFile;
-import main.java.fishtank.environment.Environment;
 
 public class ExampleDevice implements FishTankDevice{
-	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+	
+	private static final Logger LOGGER = Logger.getLogger(ExampleDevice.class.getName());
 
 	private boolean isRunning;
 	private final String id = "ABC123";
@@ -70,6 +70,9 @@ public class ExampleDevice implements FishTankDevice{
 	
 	public boolean isRunning() {
 		return this.isRunning;
+	}
+	public void setIsRunning(boolean runningValue) {
+		this.isRunning = runningValue;
 	}
 	public String getID() {
 		return this.id;

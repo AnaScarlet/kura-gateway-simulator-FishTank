@@ -44,6 +44,13 @@ public class Environment extends Thread {
 	private Plants plants;
 	private PH pH_obj;
 	private Gases gases;
+	
+	public static main.java.fishtank.devices.Clock ClockDevice;
+	public static main.java.fishtank.devices.AirThermometer AirThermometerDevice;
+	public static main.java.fishtank.devices.WaterThermometer WaterThermometerDevice;
+	public static main.java.fishtank.devices.OxygenMeter OxygenMeterDevice;
+	public static main.java.fishtank.devices.CO2Meter CO2MeterDevice;
+	public static main.java.fishtank.devices.PHMeter PHMeterDevice;
 		
 	public static final float SMALL_FISH_MIN_DO = 2; // DO - dissolved oxygen in mg/L. 
 	public static final float MEDIUM_FISH_MIN_DO = 6;
@@ -549,27 +556,27 @@ public class Environment extends Thread {
 	}
 	
 	public void makeClockDevice(final String id, final String name, final String manufacturer, final String model) {
-		new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this, clock.getMonitor());
+		Environment.ClockDevice =  new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this, clock.getMonitor());
 	}
 	
 	public void makeAirThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
-		new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this, airTemp.getMonitor());
+		Environment.AirThermometerDevice = new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this, airTemp.getMonitor());
 	}	
 	
 	public void makeWaterThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
-		new main.java.fishtank.devices.WaterThermometer(id, name, manufacturer, model, this, waterTemp.getMonitor());
+		Environment.WaterThermometerDevice = new main.java.fishtank.devices.WaterThermometer(id, name, manufacturer, model, this, waterTemp.getMonitor());
 	}
 	
 	public void makeOxygenMeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		new main.java.fishtank.devices.OxygenMeter(id, name, manufacturer, model, this, gases.getMonitor());
+		Environment.OxygenMeterDevice = new main.java.fishtank.devices.OxygenMeter(id, name, manufacturer, model, this, gases.getMonitor());
 	}
 	
 	public void makeCO2MeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		new main.java.fishtank.devices.CO2Meter(id, name, manufacturer, model, this, gases.getMonitor());
+		Environment.CO2MeterDevice = new main.java.fishtank.devices.CO2Meter(id, name, manufacturer, model, this, gases.getMonitor());
 	}
 	
 	public void makePHMeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this, pH_obj.getMonitor());
+		Environment.PHMeterDevice = new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this, pH_obj.getMonitor());
 	}
 	
 	public boolean getRun() {

@@ -10,13 +10,13 @@
  *******************************************************************************/
 package main.java.fishtank.devices;
 
-public interface FishTankDevice extends Runnable {
+public interface FishTankDevice {
 	
 	public void run();
 	
 	public boolean isRunning();
 	
-	public void setIsRunning(boolean runningValue);
+	public void setIsRunning(boolean value);
 	
 	public String getID();
 	

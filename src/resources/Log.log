@@ -1,338 +1,592 @@
-Jun 29, 2017 11:17:24 AM test.java.fishtank.environment.ALoggerTest testLogs
+Jul 11, 2017 10:11:59 PM test.java.fishtank.environment.ALoggerTest testLogs
 INFO: Hi from logger test
-Jun 29, 2017 11:17:24 AM test.java.fishtank.environment.ALoggerTest testLogs
+Jul 11, 2017 10:11:59 PM test.java.fishtank.environment.ALoggerTest testLogs
 FINEST: Hi from logger test
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment run
+Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment run
 FINE: Preparations complete.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
+Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment createThread
 INFO: Clock Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: Air Temperature Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: Water Temperature Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: Fish Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: Decomposers Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: Plants Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: pH Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment createThread
-INFO: Gases Thread started
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment run
+Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment run
 FINE: Threads started.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Gases run
-FINE: In Gases Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Gases run
-FINE: Gases data written to file.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$PH run
+Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$PH run
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Plants run
-FINE: In Plants Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Plants run
-FINE: Plant data written to file.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:17:24 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 2 complete.
+Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$PH run
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$PH run
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Plants run
-FINE: In Plants Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Plants run
-FINE: Plant data written to file.
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jun 29, 2017 11:17:30 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 3 complete.
+Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 4 complete.
+Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Clock run
 FINE: In Clock Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Plants run
-FINE: In Plants Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Plants run
-FINE: Plant data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:17:36 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Fish run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Fish run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Decomposers run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Decomposers run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jun 29, 2017 11:17:42 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 5 complete.
+Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Gases run
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 6 complete.
+Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 7 complete.
+Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Clock run
 FINE: In Clock Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:17:48 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Fish run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Fish run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Decomposers run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Decomposers run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jun 29, 2017 11:17:54 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 8 complete.
+Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Plants run
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 9 complete.
+Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Clock run
 FINE: In Clock Thread
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:18:00 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 10 complete.
+Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Clock run
 FINE: In Clock Thread
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:18:06 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Clock run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.AirThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.AirThermometer run
+INFO: 22
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jun 29, 2017 11:18:12 AM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Fish run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.WaterThermometer run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.WaterThermometer run
+INFO: 22
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Fish run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Decomposers run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jun 29, 2017 11:18:18 AM main.java.fishtank.environment.Environment$Decomposers run
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Clock run
-INFO: Cycle complete.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jun 29, 2017 11:18:24 AM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jun 29, 2017 11:18:29 AM test.java.fishtank.environment.EnvironmentTest main
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.PHMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.PHMeter run
+INFO: 6.0
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.OxygenMeter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.OxygenMeter run
+INFO: 2.25
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.CO2Meter run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.CO2Meter run
+INFO: 7.75
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.Clock run
+INFO: Update received. Uploading data...
+Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.Clock run
+INFO: 11
+Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 11 complete.
+Jul 11, 2017 10:13:04 PM test.java.fishtank.environment.EnvironmentTest main
 FINE: Everything is done and cleaned.

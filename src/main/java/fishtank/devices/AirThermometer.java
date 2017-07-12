@@ -15,38 +15,28 @@ public class AirThermometer implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Object monitor;
+	private Thread t;
 	
 	private Environment env;
 	private ArrayList<Integer> tempArray;
 	
 	
 	public AirThermometer(final String id, final String name, final String manufacturer, final String model, 
-			final Environment env, final Object monitor){
+			final Environment env){
 		this.id = id;
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
-		this.tempArray = new ArrayList<Integer>();
-		this.monitor = monitor;
-		
+		this.tempArray = new ArrayList<Integer>();		
 		this.env = env;
-		this.createThread(this, "Air Thermometer Device Thread");
 	}
 	
 	public void run() {
 		this.isRunning = true;
-		synchronized (this.monitor) {
-			while (true) {
-				try {
-					this.monitor.wait();
-				} catch (InterruptedException e) {
-					LOGGER.log(Level.SEVERE, e.toString(), e);
-				}
-				LOGGER.log(Level.INFO, "Update received. Uploading data...");
-				tempArray.add(Integer.valueOf(env.getAirTemperature()));
-			}
-		}
+		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		final Integer dataPoint = Integer.valueOf(env.getAirTemperature());
+		tempArray.add(dataPoint);
+		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -58,18 +48,12 @@ public class AirThermometer implements FishTankDevice {
 		} return false;
 	}
 	
-	private void createThread(Runnable obj, String threadName) {
-		Thread t = new Thread(obj, threadName);
-		t.start();
-		LOGGER.log(Level.INFO, t.getName() + " started", t);
+	public void setIsRunning(boolean value) {
+		this.isRunning = value;
 	}
 	
 	public boolean isRunning() {
 		return this.isRunning;
-	}
-	
-	public void setIsRunning(boolean runningValue) {
-		this.isRunning = runningValue;
 	}
 
 	public String getID() {

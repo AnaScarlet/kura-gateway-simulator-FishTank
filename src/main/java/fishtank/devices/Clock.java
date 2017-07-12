@@ -25,38 +25,29 @@ public class Clock implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Object monitor;
+	private Thread t;
 	
 	private Environment env;
 	private ArrayList<Integer> hoursArray;
 	
 	
 	public Clock(final String id, final String name, final String manufacturer, final String model, 
-			final Environment env, final Object monitor){
+			final Environment env){
 		this.id = id;
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.hoursArray = new ArrayList<Integer>();
-		this.monitor = monitor;
 		
 		this.env = env;
-		this.createThread(this, "Clock Device Thread");
 	}
 	
 	public void run() {
 		this.isRunning = true;
-		synchronized (this.monitor) {
-			while (true) {
-				try {
-					this.monitor.wait();
-				} catch (InterruptedException e) {
-					LOGGER.log(Level.SEVERE, e.toString(), e);
-				}
-				LOGGER.log(Level.INFO, "Update received. Uploading data...");
-				hoursArray.add(Integer.valueOf(env.getHour()));
-			}
-		}
+		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		final Integer dataPoint  = Integer.valueOf(env.getHour());
+		hoursArray.add(dataPoint);
+		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -68,18 +59,12 @@ public class Clock implements FishTankDevice {
 		} return false;
 	}
 	
-	private void createThread(Runnable obj, String threadName) {
-		Thread t = new Thread(obj, threadName);
-		t.start();
-		LOGGER.log(Level.INFO, t.getName() + " started", t);
+	public void setIsRunning(boolean value) {
+		this.isRunning = value;
 	}
 	
 	public boolean isRunning() {
 		return this.isRunning;
-	}
-	
-	public void setIsRunning(boolean runningValue) {
-		this.isRunning = runningValue;
 	}
 
 	public String getID() {

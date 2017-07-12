@@ -15,38 +15,29 @@ public class CO2Meter implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Object monitor;
+	private Thread t;
 	
 	private Environment env;
 	private ArrayList<Float> airArray;
 	
 	
 	public CO2Meter(final String id, final String name, final String manufacturer, final String model, 
-			final Environment env, final Object monitor){
+			final Environment env){
 		this.id = id;
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.airArray = new ArrayList<Float>();
-		this.monitor = monitor;
 		
 		this.env = env;
-		this.createThread(this, "CO2 Meter Device Thread");
 	}
 	
 	public void run() {
 		this.isRunning = true;
-		synchronized (this.monitor) {
-			while (true) {
-				try {
-					this.monitor.wait();
-				} catch (InterruptedException e) {
-					LOGGER.log(Level.SEVERE, e.toString(), e);
-				}
-				LOGGER.log(Level.INFO, "Update received. Uploading data...");
-				airArray.add(Float.valueOf(env.getDissolvedCO2()));
-			}
-		}
+		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		final Float dataPoint = Float.valueOf(env.getDissolvedCO2());
+		airArray.add(dataPoint);
+		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -58,10 +49,8 @@ public class CO2Meter implements FishTankDevice {
 		} return false;
 	}
 	
-	private void createThread(Runnable obj, String threadName) {
-		Thread t = new Thread(obj, threadName);
-		t.start();
-		LOGGER.log(Level.INFO, t.getName() + " started", t);
+	public void setIsRunning(boolean value) {
+		this.isRunning = value;
 	}
 	
 	public boolean isRunning() {
@@ -70,10 +59,6 @@ public class CO2Meter implements FishTankDevice {
 
 	public String getID() {
 		return this.id;
-	}
-
-	public void setIsRunning(boolean runningValue) {
-		this.isRunning = runningValue;
 	}
 
 	public String getName() {

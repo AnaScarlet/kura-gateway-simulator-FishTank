@@ -14,10 +14,12 @@ public class MakingDevicesTest {
 	@Test
 	public void main() {
 		Environment env = new Environment();
+		env.setTimeSpeed(10);
+		env.setSmallFishNum(4);
 		env.start();
 		
 		try {
-			Thread.sleep(6000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e1) {
 			LOGGER.log(Level.SEVERE, e1.toString(), e1);
 		}
@@ -32,6 +34,7 @@ public class MakingDevicesTest {
 		
 		try {
 			Thread.sleep(60000);
+			env.stopThreads();
 		} catch (InterruptedException e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
@@ -50,10 +53,7 @@ public class MakingDevicesTest {
 		Environment.PHMeterDevice.writeToFile();
 		Environment.WaterThermometerDevice.writeToFile();
 		
-		try {
-			env.stopThreads();
-		} catch (InterruptedException e2) {
-			LOGGER.log(Level.SEVERE, e2.toString(), e2);
-		}
+		env = null;
+		System.gc();
 	}
 }

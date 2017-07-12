@@ -117,12 +117,9 @@ public class Environment extends Thread {
 		protected int interval;
 		private Environment env;
 		private Calendar cal = Calendar.getInstance();
-		private boolean clockDone = false;
-		private Object deviceMonitor;
 		
 		public Clock(final Environment env, final int hour) {
 			this.env = env;
-			deviceMonitor = new Object();
 			setHour(hour);
 			setINTERVAL();
 			
@@ -131,7 +128,6 @@ public class Environment extends Thread {
 		
 		public void run() {
 			while(run) {
-				clockDone = false;
 				LOGGER.log(Level.FINE, "In Clock Thread");
 				try {
 					Thread.sleep(this.interval);
@@ -143,13 +139,21 @@ public class Environment extends Thread {
 					setHour();
 					writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
 					LOGGER.log(Level.FINE, "Clock data written to file.");
-					this.clockDone = true;
-					this.env.notifyAll();
-				} synchronized (this.deviceMonitor) {
-					this.deviceMonitor.notifyAll();
-				} 
+					this.callElements();
+				Environment.ClockDevice.run();
 				LOGGER.log(Level.INFO, "Cycle " + (env.hour + 1) + " complete.");
+				}
 			}
+		}
+		
+		private void callElements() {
+			env.airTemp.run();
+			env.waterTemp.run();
+			env.fish.run();
+			env.decomposers.run();
+			env.plants.run();
+			env.pH_obj.run();
+			env.gases.run();
 		}
 		
 		public synchronized void setHour() {
@@ -164,103 +168,58 @@ public class Environment extends Thread {
 		public synchronized void setINTERVAL() {
 			this.interval = MILLISEC / env.timeSpeed;
 		}
-
-		public boolean clockDone(){
-			return this.clockDone;
-		}
-		
-		public Object getMonitor() {
-			return this.deviceMonitor;
-		}
-		
 	}
 	
-	private class AirTemperature implements Runnable {
+	private class AirTemperature {
 		
 		private Environment env;
-		private Object deviceMonitor;
 		private int rate = 1; // in Celsius per hour
 		
 		public AirTemperature(Environment env) {
 			this.env = env;
-			deviceMonitor = new Object();
-			env.createThread(this, "Air Temperature Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In Air Temperature Thread");
-					if (this.env.hour < 6 && this.env.hour > 10) {
-						this.increase(this.rate);
-					} else if (this.env.hour > 6 && this.env.hour < 10) {
-						this.increase(- this.rate);
-					}
-					writer.writeToFile("\nAir Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
-					LOGGER.log(Level.FINE, "Air Temperature data written to file.");
-				} synchronized (this.deviceMonitor) {
-					this.deviceMonitor.notifyAll();
-				}
+			LOGGER.log(Level.FINE, "In Air Temperature Thread");
+			if (this.env.hour < 6 && this.env.hour > 10) {
+				this.increase(this.rate);
+			} else if (this.env.hour > 6 && this.env.hour < 10) {
+				this.increase(- this.rate);
 			}
+			writer.writeToFile("\nAir Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
+			LOGGER.log(Level.FINE, "Air Temperature data written to file.");
+			Environment.AirThermometerDevice.run();
 		}
 		
 		public synchronized void increase (int rate) {
 			this.env.airTemperature += rate;
 		}
-		
-		public Object getMonitor() {
-			return this.deviceMonitor;
-		}
-
 	}
 	
-	private class WaterTemperature implements Runnable {
+	private class WaterTemperature {
 		
 		private Environment env;
-		private Object deviceMonitor;
 		private int rate = 1; // in Celsius per hour
 		
 		public WaterTemperature(Environment env) {
 			this.env = env;	
-			this.deviceMonitor = new Object();
-			env.createThread(this, "Water Temperature Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In Water Temperature Thread");
-					if (env.airTemperature > env.waterTemperature) {
-						this.increase(this.rate);
-					} else if (env.airTemperature < env.waterTemperature) {
-						this.increase(- this.rate);
-					}
-					writer.writeToFile("\nWater Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
-					LOGGER.log(Level.FINE, "Water Temperature data written to file.");
-				} synchronized (this.deviceMonitor) {
-					this.deviceMonitor.notifyAll();
-				}
+			LOGGER.log(Level.FINE, "In Water Temperature Thread");
+			if (env.airTemperature > env.waterTemperature) {
+				this.increase(this.rate);
+			} else if (env.airTemperature < env.waterTemperature) {
+				this.increase(- this.rate);
 			}
+			writer.writeToFile("\nWater Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
+			LOGGER.log(Level.FINE, "Water Temperature data written to file.");
+			Environment.WaterThermometerDevice.run();
 		}
 		
 		private synchronized void increase (int rate) {
 			this.env.waterTemperature += rate;
 		}
-		
-		public Object getMonitor() {
-			return this.deviceMonitor;
-		}
-
 	}
 	
 	/**
@@ -268,7 +227,7 @@ public class Environment extends Thread {
 	 * @author Owner
 	 *
 	 */
-	private class Fish implements Runnable{
+	private class Fish{
 		
 		private Environment env; 
 		
@@ -280,59 +239,48 @@ public class Environment extends Thread {
 		
 		public Fish(Environment env) {
 			this.env = env;
-			env.createThread(this, "Fish Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In Fish Thread");
-					if (env.dissolvedOxygen == 0 && env.smallFishNum > 0) {
-						env.smallFishNum = 0;
-						env.deadOrganismMass += Fish.SMALL_FISH_MASS * env.smallFishNum;
-					}
-					else if ((env.dissolvedOxygen < Environment.SMALL_FISH_MIN_DO || 
-							env.dissolvedOxygen > Environment.SMALL_FISH_MAX_DO
-							|| env.pHchangeInDay > 1.5) && env.smallFishNum > 0) {
-						env.smallFishNum -= Fish.DEATH_RATE;
-						env.deadOrganismMass += Fish.SMALL_FISH_MASS * Fish.DEATH_RATE;
-					} 
-					if (env.dissolvedOxygen == 0 && env.mediumFishNum > 0) {
-						env.mediumFishNum = 0;
-						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * env.mediumFishNum;
-					}
-					else if ((env.dissolvedOxygen < Environment.MEDIUM_FISH_MIN_DO || 
-							env.dissolvedOxygen > Environment.MEDIUM_FISH_MAX_DO
-							|| env.pHchangeInDay > 1.5) && env.mediumFishNum > 0) {
-						env.mediumFishNum -= Fish.DEATH_RATE;
-						env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * Fish.DEATH_RATE;
-					} 
-					if (env.dissolvedOxygen == 0 && env.largeFishNum > 0) {
-						env.largeFishNum = 0;
-						env.deadOrganismMass += Fish.LARGE_FISH_MASS * env.largeFishNum;
-					}
-					else if ((env.dissolvedOxygen < Environment.LARGE_FISH_MIN_DO || 
-							env.dissolvedOxygen > Environment.LARGE_FISH_MAX_DO
-							|| env.pHchangeInDay > 1.5) && env.largeFishNum > 0) {
-						env.largeFishNum -= Fish.DEATH_RATE;
-						env.deadOrganismMass += Fish.LARGE_FISH_MASS * Fish.DEATH_RATE;
-					} 
-					writer.writeToFile("\nSmall Fish:" + String.valueOf(env.getSmallFishNum()) + "," 
-					+ "\nMedium Fish:" + env.getMediumFishNum() + ","
-					+ "\nLarge Fish:" + env.getLargeFishNum() + ",");
-					LOGGER.log(Level.FINE, "Fish data written to file.");
+				LOGGER.log(Level.FINE, "In Fish Thread");
+				if (env.dissolvedOxygen == 0 && env.smallFishNum > 0) {
+					env.smallFishNum = 0;
+					env.deadOrganismMass += Fish.SMALL_FISH_MASS * env.smallFishNum;
 				}
+				else if ((env.dissolvedOxygen < Environment.SMALL_FISH_MIN_DO || 
+						env.dissolvedOxygen > Environment.SMALL_FISH_MAX_DO
+						|| env.pHchangeInDay > 1.5) && env.smallFishNum > 0) {
+					env.smallFishNum -= Fish.DEATH_RATE;
+					env.deadOrganismMass += Fish.SMALL_FISH_MASS * Fish.DEATH_RATE;
+				} 
+				if (env.dissolvedOxygen == 0 && env.mediumFishNum > 0) {
+					env.mediumFishNum = 0;
+					env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * env.mediumFishNum;
+				}
+				else if ((env.dissolvedOxygen < Environment.MEDIUM_FISH_MIN_DO || 
+						env.dissolvedOxygen > Environment.MEDIUM_FISH_MAX_DO
+						|| env.pHchangeInDay > 1.5) && env.mediumFishNum > 0) {
+					env.mediumFishNum -= Fish.DEATH_RATE;
+					env.deadOrganismMass += Fish.MEDIUM_FISH_MASS * Fish.DEATH_RATE;
+				} 
+				if (env.dissolvedOxygen == 0 && env.largeFishNum > 0) {
+					env.largeFishNum = 0;
+					env.deadOrganismMass += Fish.LARGE_FISH_MASS * env.largeFishNum;
+				}
+				else if ((env.dissolvedOxygen < Environment.LARGE_FISH_MIN_DO || 
+						env.dissolvedOxygen > Environment.LARGE_FISH_MAX_DO
+						|| env.pHchangeInDay > 1.5) && env.largeFishNum > 0) {
+					env.largeFishNum -= Fish.DEATH_RATE;
+					env.deadOrganismMass += Fish.LARGE_FISH_MASS * Fish.DEATH_RATE;
+				} 
+				writer.writeToFile("\nSmall Fish:" + String.valueOf(env.getSmallFishNum()) + "," 
+				+ "\nMedium Fish:" + env.getMediumFishNum() + ","
+				+ "\nLarge Fish:" + env.getLargeFishNum() + ",");
+				LOGGER.log(Level.FINE, "Fish data written to file.");
 			}
-		}
-		
 	}
 	
-	private class Decomposers implements Runnable {
+	private class Decomposers {
 		
 		private Environment env;
 		public static final int DEATH_RATE = 5; // decomposers per hour
@@ -340,36 +288,26 @@ public class Environment extends Thread {
 		
 		public Decomposers(Environment env) {
 			this.env = env;
-			env.createThread(this, "Decomposers Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In Decomposers Thread");
-					if (env.dissolvedOxygen < Environment.DECOMPOSERS_RESPIRATION_RATE && env.decomposersNum > 0) {
-						env.decomposersNum -= Decomposers.DEATH_RATE;
-						env.deadOrganismMass += Decomposers.MASS * Decomposers.DEATH_RATE;
-					} if (env.dissolvedOxygen == 0 && env.decomposersNum > 0) {
-						env.decomposersNum = 0;
-						env.deadOrganismMass += Decomposers.MASS * env.decomposersNum;
-					} else if (env.deadOrganismMass < 0 && env.decomposersNum > 0) {
-						env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
-																// dead mass by one unit per hour					
-					}
-					writer.writeToFile("\nDecomposers:" + String.valueOf(env.getDecomposersNum()) + ",");
-					LOGGER.log(Level.FINE, "Decomposers data written to file.");
-				}
+			LOGGER.log(Level.FINE, "In Decomposers Thread");
+			if (env.dissolvedOxygen < Environment.DECOMPOSERS_RESPIRATION_RATE && env.decomposersNum > 0) {
+				env.decomposersNum -= Decomposers.DEATH_RATE;
+				env.deadOrganismMass += Decomposers.MASS * Decomposers.DEATH_RATE;
+			} if (env.dissolvedOxygen == 0 && env.decomposersNum > 0) {
+				env.decomposersNum = 0;
+				env.deadOrganismMass += Decomposers.MASS * env.decomposersNum;
+			} else if (env.deadOrganismMass < 0 && env.decomposersNum > 0) {
+				env.deadOrganismMass -= env.decomposersNum; // each decomposer reduces 
+														// dead mass by one unit per hour					
 			}
+			writer.writeToFile("\nDecomposers:" + String.valueOf(env.getDecomposersNum()) + ",");
+			LOGGER.log(Level.FINE, "Decomposers data written to file.");
 		}
 	}
 	
-	private class Plants implements Runnable {
+	private class Plants {
 		
 		private Environment env;
 		public static final int DEATH_RATE = 1; // plants per hour
@@ -377,79 +315,55 @@ public class Environment extends Thread {
 		
 		public Plants(Environment env) {
 			this.env = env;
-			env.createThread(this, "Plants Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In Plants Thread");
-					
-					if (env.dissolvedCO2 == 0 && env.plantNum > 0) {
-						env.plantNum = 0;
-						env.deadOrganismMass += Plants.MASS * env.plantNum;
-					}
-					else if ((env.dissolvedCO2 < Environment.DISSOLVED_CO2 || env.pHchangeInDay > 2) && env.plantNum > 0) {
-						env.plantNum -= Plants.DEATH_RATE;
-						env.deadOrganismMass += Plants.MASS * Plants.DEATH_RATE;
-					} 
-					writer.writeToFile(String.valueOf("\nPlants:" + env.getPlantNum()) + ",");
-					
-					LOGGER.log(Level.FINE, "Plant data written to file.");
-				}
+			LOGGER.log(Level.FINE, "In Plants Thread");
+			
+			if (env.dissolvedCO2 == 0 && env.plantNum > 0) {
+				env.plantNum = 0;
+				env.deadOrganismMass += Plants.MASS * env.plantNum;
 			}
+			else if ((env.dissolvedCO2 < Environment.DISSOLVED_CO2 || env.pHchangeInDay > 2) && env.plantNum > 0) {
+				env.plantNum -= Plants.DEATH_RATE;
+				env.deadOrganismMass += Plants.MASS * Plants.DEATH_RATE;
+			} 
+			writer.writeToFile(String.valueOf("\nPlants:" + env.getPlantNum()) + ",");
+			
+			LOGGER.log(Level.FINE, "Plant data written to file.");
 		}
-		
 	}
 	
-	private class PH implements Runnable {
+	private class PH {
 		private Environment env;
-		private Object deviceMonitor;
 		private int phChange = 0;
 		private int numTimesRan = 0;
 		
 		public PH(Environment env) {
 			this.env = env;
-			deviceMonitor = new Object();
-			env.createThread(this, "pH Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In PH Thread");
-					float reactionRate = 0;
-					try {
-						reactionRate = this.calcCO2ReactionRate();
-					} catch (UnlikelyPHException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					env.pH -= reactionRate;
-					if (this.calcTotalPhotosynthesisRate() < this.calcTotalRespirationRate()) {
-						if (numTimesRan <= 23) {
-							phChange += reactionRate;
-							numTimesRan++;
-						} else {
-							env.pHchangeInDay = phChange;
-							numTimesRan = 0;
-						}
-					} 
-					writer.writeToFile("\nPH:" + String.valueOf(env.getPH()) + ",");
-					LOGGER.log(Level.FINE, "PH data written to file.");
-				} synchronized (this.deviceMonitor) {
-					this.deviceMonitor.notifyAll();
-				}
+			LOGGER.log(Level.FINE, "In PH Thread");
+			float reactionRate = 0;
+			try {
+				reactionRate = this.calcCO2ReactionRate();
+			} catch (UnlikelyPHException e) {
+				LOGGER.log(Level.SEVERE, e.toString(), e);
 			}
+			env.pH -= reactionRate;
+			if (this.calcTotalPhotosynthesisRate() < this.calcTotalRespirationRate()) {
+				if (numTimesRan <= 23) {
+					phChange += reactionRate;
+					numTimesRan++;
+				} else {
+					env.pHchangeInDay = phChange;
+					numTimesRan = 0;
+				}
+			} 
+			writer.writeToFile("\nPH:" + String.valueOf(env.getPH()) + ",");
+			LOGGER.log(Level.FINE, "PH data written to file.");
+			Environment.PHMeterDevice.run();
 		}
 		
 		private synchronized float calcTotalRespirationRate() {
@@ -481,64 +395,44 @@ public class Environment extends Thread {
 				reactionRate += 0.5;
 			return reactionRate;
 		}
-		
-		public Object getMonitor() {
-			return this.deviceMonitor;
-		}
 
 	}
 	
-	private class Gases implements Runnable {
+	private class Gases {
 		
 		private Environment env;
-		private Object deviceMonitor;
 		
 		public Gases(Environment env) {
 			this.env =  env;
-			deviceMonitor = new Object();
-			env.createThread(this, "Gases Thread");
 		}
 		
 		public void run() {
-			while(!clock.clockDone()) {
-				synchronized(env) {
-					try {
-						env.wait();
-					} catch (InterruptedException e) {
-						LOGGER.log(Level.SEVERE, e.toString(), e);
-					}
-					LOGGER.log(Level.FINE, "In Gases Thread");
-					if (env.smallFishNum > 0) {
-						env.dissolvedCO2 += Environment.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
-						env.dissolvedOxygen -= Environment.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
-					} 
-					if (env.mediumFishNum > 0) {
-						env.dissolvedCO2 += Environment.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
-						env.dissolvedOxygen -= Environment.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
-					} 
-					if (env.largeFishNum > 0) {
-						env.dissolvedCO2 += Environment.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
-						env.dissolvedOxygen -= Environment.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
-					} 
-					if (env.plantNum > 0) {
-						env.dissolvedOxygen += Environment.DISSOLVED_CO2 * env.plantNum;
-					}
-					if (env.decomposersNum > 0) {
-						env.dissolvedCO2 += Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;
-						env.dissolvedOxygen -= Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;					
-					}
-					writer.writeToFile(String.valueOf("\nOxygen:" + env.getDissolvedOxygen() + "," 
-							+ "\nCO2:" + env.getDissolvedCO2() + ","));
-					
-					LOGGER.log(Level.FINE, "Gases data written to file.");
-				} synchronized (this.deviceMonitor) {
-					this.deviceMonitor.notifyAll();
-				}
-			}			
-		}
-		
-		public Object getMonitor() {
-			return this.deviceMonitor;
+			LOGGER.log(Level.FINE, "In Gases Thread");
+			if (env.smallFishNum > 0) {
+				env.dissolvedCO2 += Environment.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
+				env.dissolvedOxygen -= Environment.SMALL_FISH_RESPIRATION_RATE * env.smallFishNum;
+			} 
+			if (env.mediumFishNum > 0) {
+				env.dissolvedCO2 += Environment.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
+				env.dissolvedOxygen -= Environment.MEDIUM_FISH_RESPIRATION_RATE * env.mediumFishNum;
+			} 
+			if (env.largeFishNum > 0) {
+				env.dissolvedCO2 += Environment.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
+				env.dissolvedOxygen -= Environment.LARGE_FISH_RESPIRATION_RATE * env.largeFishNum;
+			} 
+			if (env.plantNum > 0) {
+				env.dissolvedOxygen += Environment.DISSOLVED_CO2 * env.plantNum;
+			}
+			if (env.decomposersNum > 0) {
+				env.dissolvedCO2 += Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;
+				env.dissolvedOxygen -= Environment.DECOMPOSERS_RESPIRATION_RATE * env.decomposersNum;					
+			}
+			writer.writeToFile(String.valueOf("\nOxygen:" + env.getDissolvedOxygen() + "," 
+					+ "\nCO2:" + env.getDissolvedCO2() + ","));
+			
+			LOGGER.log(Level.FINE, "Gases data written to file.");
+			Environment.OxygenMeterDevice.run();	
+			Environment.CO2MeterDevice.run();
 		}
 	}
 	
@@ -556,27 +450,27 @@ public class Environment extends Thread {
 	}
 	
 	public void makeClockDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.ClockDevice =  new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this, clock.getMonitor());
+		Environment.ClockDevice =  new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this);
 	}
 	
 	public void makeAirThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.AirThermometerDevice = new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this, airTemp.getMonitor());
+		Environment.AirThermometerDevice = new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this);
 	}	
 	
 	public void makeWaterThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.WaterThermometerDevice = new main.java.fishtank.devices.WaterThermometer(id, name, manufacturer, model, this, waterTemp.getMonitor());
+		Environment.WaterThermometerDevice = new main.java.fishtank.devices.WaterThermometer(id, name, manufacturer, model, this);
 	}
 	
 	public void makeOxygenMeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.OxygenMeterDevice = new main.java.fishtank.devices.OxygenMeter(id, name, manufacturer, model, this, gases.getMonitor());
+		Environment.OxygenMeterDevice = new main.java.fishtank.devices.OxygenMeter(id, name, manufacturer, model, this);
 	}
 	
 	public void makeCO2MeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.CO2MeterDevice = new main.java.fishtank.devices.CO2Meter(id, name, manufacturer, model, this, gases.getMonitor());
+		Environment.CO2MeterDevice = new main.java.fishtank.devices.CO2Meter(id, name, manufacturer, model, this);
 	}
 	
 	public void makePHMeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.PHMeterDevice = new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this, pH_obj.getMonitor());
+		Environment.PHMeterDevice = new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this);
 	}
 	
 	public boolean getRun() {

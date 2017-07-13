@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Environment extends Thread {
+public class Environment {
 	
 	private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
 	
@@ -32,6 +32,7 @@ public class Environment extends Thread {
 	private int mediumFishNum;
 	private int largeFishNum;
 	private volatile int deadOrganismMass;
+	private int timeInterval;
 
 	private static WriteToFile writer;
 	private static boolean run;
@@ -66,6 +67,8 @@ public class Environment extends Thread {
 	public static final float LARGE_FISH_RESPIRATION_RATE = (float) 0.5;
 	public static final float DECOMPOSERS_RESPIRATION_RATE = (float) 0.0025; // of a plant per hour
 	public static final float PHOTOSYNTHESIS_RATE = (float) 0.1; // O2 produced per hour per plant
+	
+	public static final int MILLISEC = 60000;
 
 	public Environment(int hour, int airTemperature, int waterTemperature, int timeSpeed, float dissolvedCO2,
 			float dissolvedOxygen, float pH, int plantNum, int smallFishNum, int mediumFishNum, int largeFishNum,
@@ -84,16 +87,7 @@ public class Environment extends Thread {
 		this.decomposersNum = decomposersNum;
 		this.deadOrganismMass = 0;
 		this.pHchangeInDay = 0;
-	}
-	
-	/**
-	 * Sets variables to default values (no fish or plants). 
-	 */
-	public Environment() {
-		this(0, 25, 25, 1, (float) 5, (float) 5, (float) 7, 0, 0, 0, 0, 20);
-	}
-	
-	public void run() {
+		
 		Environment.run = true;
 		Environment.writer = new WriteToFile("envData.txt");
 		
@@ -107,53 +101,47 @@ public class Environment extends Thread {
 		this.plants = new Plants(this);
 		this.pH_obj = new PH(this);
 		this.gases = new Gases(this);
-		
-		LOGGER.log(Level.FINE, "Threads started.");		
 	}
 	
-	private static class Clock implements Runnable {
+	/**
+	 * Sets variables to default values (no fish or plants). 
+	 */
+	public Environment() {
+		this(0, 25, 25, 1, (float) 5, (float) 5, (float) 7, 0, 0, 0, 0, 20);
+	}
+	
+	public void callElements() {
+		this.clock.run();
+		this.airTemp.run();
+		this.waterTemp.run();
+		this.fish.run();
+		this.decomposers.run();
+		this.plants.run();
+		this.pH_obj.run();
+		this.gases.run();
+		}
+	
+	private static class Clock {
 		
-		public static final int MILLISEC = 60000;
-		protected int interval;
 		private Environment env;
 		private Calendar cal = Calendar.getInstance();
 		
 		public Clock(final Environment env, final int hour) {
 			this.env = env;
 			setHour(hour);
-			setINTERVAL();
-			
-			env.createThread(this, "Clock Thread");
+			env.calculateInterval();
 		}
 		
 		public void run() {
-			while(run) {
-				LOGGER.log(Level.FINE, "In Clock Thread");
-				try {
-					Thread.sleep(this.interval);
-				} catch (InterruptedException e) {
-					LOGGER.log(Level.SEVERE, e.toString(), e);
-				}
-				synchronized(env) {
-					cal.roll(Calendar.HOUR_OF_DAY, true);
-					setHour();
-					writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
-					LOGGER.log(Level.FINE, "Clock data written to file.");
-					this.callElements();
-				Environment.ClockDevice.run();
-				LOGGER.log(Level.INFO, "Cycle " + (env.hour + 1) + " complete.");
-				}
+			LOGGER.log(Level.FINE, "In Clock Thread");
+			synchronized(env) {
+				cal.roll(Calendar.HOUR_OF_DAY, true);
+				setHour();
+				writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
+				LOGGER.log(Level.FINE, "Clock data written to file.");
+			Environment.ClockDevice.run();
+			LOGGER.log(Level.INFO, "Cycle " + (env.hour + 1) + " complete.");
 			}
-		}
-		
-		private void callElements() {
-			env.airTemp.run();
-			env.waterTemp.run();
-			env.fish.run();
-			env.decomposers.run();
-			env.plants.run();
-			env.pH_obj.run();
-			env.gases.run();
 		}
 		
 		public synchronized void setHour() {
@@ -165,9 +153,6 @@ public class Environment extends Thread {
 			this.setHour();
 		}
 		
-		public synchronized void setINTERVAL() {
-			this.interval = MILLISEC / env.timeSpeed;
-		}
 	}
 	
 	private class AirTemperature {
@@ -383,12 +368,12 @@ public class Environment extends Thread {
 		 * @throws UnlikelyPHException
 		 */
 		private synchronized float calcCO2ReactionRate() throws UnlikelyPHException {
-			float reactionRate = 0;
+			float reactionRate = 0; // per hour
 			if (env.pH < 6.4 && env.pH > 0) {
 			} else if (env.pH > 6.4 && env.pH < 10.4) {
-				reactionRate = 1;
+				reactionRate = (float) 0.01;
 			} else if (env.pH > 10.4 && env.pH < 14) {
-				reactionRate = 2;
+				reactionRate = (float) 0.02;
 			} else {
 				throw new UnlikelyPHException();
 			} if (env.dissolvedCO2 >= 10)
@@ -436,19 +421,6 @@ public class Environment extends Thread {
 		}
 	}
 	
-	private void createThread(Runnable obj, String threadName) {
-		Thread t = new Thread(obj, threadName);
-		t.start();
-		LOGGER.log(Level.INFO, t.getName() + " started", t);
-	}
-
-	public void stopThreads() throws InterruptedException {
-		Environment.run = false;
-		Thread.sleep(5000);
-		writer.done();
-		this.join();
-	}
-	
 	public void makeClockDevice(final String id, final String name, final String manufacturer, final String model) {
 		Environment.ClockDevice =  new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this);
 	}
@@ -473,11 +445,23 @@ public class Environment extends Thread {
 		Environment.PHMeterDevice = new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this);
 	}
 	
+	public void calculateInterval() {
+		this.setInterval(MILLISEC / this.timeSpeed);
+	}
+	
+	public void setInterval(int interval) {
+		this.timeInterval = interval;
+	}
+	
+	public int getInterval() {
+		return this.timeInterval;
+	}
+	
 	public boolean getRun() {
 		return Environment.run;
 	}
 	
-	public synchronized int getHour() {
+	public int getHour() {
 		return hour;
 	}
 	
@@ -485,7 +469,7 @@ public class Environment extends Thread {
 		this.hour = hour;
 	}
 	
-	public synchronized int getAirTemperature() {
+	public int getAirTemperature() {
 		return airTemperature;
 	}
 	
@@ -493,7 +477,7 @@ public class Environment extends Thread {
 		this.airTemperature = airTemperature;
 	}
 	
-	public synchronized int getWaterTemperature() {
+	public int getWaterTemperature() {
 		return waterTemperature;
 	}
 	
@@ -501,14 +485,14 @@ public class Environment extends Thread {
 		this.waterTemperature = waterTemperature;
 	}
 	
-	public synchronized int getTimeSpeed() {
+	public int getTimeSpeed() {
 		return timeSpeed;
 	}
 	
 	public void setTimeSpeed(int timeSpeed) {
 		this.timeSpeed = timeSpeed;
 	}
-	public synchronized float getDissolvedCO2() {
+	public float getDissolvedCO2() {
 		return dissolvedCO2;
 	}
 	
@@ -516,7 +500,7 @@ public class Environment extends Thread {
 		this.dissolvedCO2 = dissolvedCO2;
 	}
 	
-	public synchronized float getDissolvedOxygen() {
+	public float getDissolvedOxygen() {
 		return dissolvedOxygen;
 	}
 	
@@ -524,7 +508,7 @@ public class Environment extends Thread {
 		this.dissolvedOxygen = dissolvedOxygen;
 	}
 	
-	public synchronized float getPH() {
+	public float getPH() {
 		return pH;
 	}
 	
@@ -540,7 +524,7 @@ public class Environment extends Thread {
 		this.plantNum = plantNum;
 	}
 	
-	public synchronized int getDecomposersNum() {
+	public int getDecomposersNum() {
 		return decomposersNum;
 	}
 	
@@ -548,7 +532,7 @@ public class Environment extends Thread {
 		this.decomposersNum = decomposersNum;
 	}
 
-	public synchronized int getSmallFishNum() {
+	public int getSmallFishNum() {
 		return smallFishNum;
 	}
 
@@ -556,7 +540,7 @@ public class Environment extends Thread {
 		this.smallFishNum = smallFishNum;
 	}
 
-	public synchronized int getMediumFishNum() {
+	public int getMediumFishNum() {
 		return mediumFishNum;
 	}
 
@@ -581,7 +565,8 @@ public class Environment extends Thread {
 			+ ", Dossolved CO2:" + this.getDissolvedCO2() + ", Dissolved Oxygen:" + this.getDissolvedOxygen()
 			+ ", Hour:" + this.getHour() + ", Large Fish:" + this.getLargeFishNum()  + ", Medium Fish:" + this.getMediumFishNum()
 			+ ", Small Fish:" + this.getSmallFishNum() + ", PH:" + this.getPH() + ", Plants:" + this.getPlantNum() 
-			+ ", Time Speed:" + this.getTimeSpeed() + ", Water Temperature:" + this.getWaterTemperature();
+			+ ", Time Speed:" + this.getTimeSpeed() + ", Water Temperature:" + this.getWaterTemperature()
+			+ ", Time Interval: " + this.timeInterval;
 	}
 
 }

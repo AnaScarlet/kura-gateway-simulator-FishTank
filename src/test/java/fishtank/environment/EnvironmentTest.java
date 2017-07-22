@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 import main.java.fishtank.environment.Environment;
+import main.java.fishtank.main.MyScheduledExecutor;
 
 public class EnvironmentTest {
 	
@@ -24,15 +25,14 @@ public class EnvironmentTest {
 	@Test
 	public void main() {
 		Environment env = new Environment(0, 14, 15, 10, 3, 5, 7, 2, 10, 0, 0, 20);
+		MyScheduledExecutor executor = new MyScheduledExecutor(env);
+		executor.schedule();
 		try {
-			env.start();
 			Thread.sleep(60000);
-			env.stopThreads();
-		} catch (InterruptedException e) {
+			} catch (InterruptedException e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
-		env = null;
-		System.gc();
+		executor.shutdownExecutor();
 		
 		LOGGER.log(Level.FINE, "Everything is done and cleaned.");
 	}

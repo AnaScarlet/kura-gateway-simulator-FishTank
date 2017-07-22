@@ -35,7 +35,7 @@ public class Environment {
 	private int timeInterval;
 
 	private static WriteToFile writer;
-	private static boolean run;
+	private boolean run;
 	
 	private Clock clock;
 	private AirTemperature airTemp;
@@ -45,13 +45,6 @@ public class Environment {
 	private Plants plants;
 	private PH pH_obj;
 	private Gases gases;
-	
-	public static main.java.fishtank.devices.Clock ClockDevice;
-	public static main.java.fishtank.devices.AirThermometer AirThermometerDevice;
-	public static main.java.fishtank.devices.WaterThermometer WaterThermometerDevice;
-	public static main.java.fishtank.devices.OxygenMeter OxygenMeterDevice;
-	public static main.java.fishtank.devices.CO2Meter CO2MeterDevice;
-	public static main.java.fishtank.devices.PHMeter PHMeterDevice;
 		
 	public static final float SMALL_FISH_MIN_DO = 2; // DO - dissolved oxygen in mg/L. 
 	public static final float MEDIUM_FISH_MIN_DO = 6;
@@ -88,7 +81,7 @@ public class Environment {
 		this.deadOrganismMass = 0;
 		this.pHchangeInDay = 0;
 		
-		Environment.run = true;
+		this.run = true;
 		Environment.writer = new WriteToFile("envData.txt");
 		
 		LOGGER.log(Level.FINE, "Preparations complete.");
@@ -139,7 +132,6 @@ public class Environment {
 				setHour();
 				writer.writeToFile("\n\nHour:" + String.valueOf(env.getHour()) + ",");
 				LOGGER.log(Level.FINE, "Clock data written to file.");
-			Environment.ClockDevice.run();
 			LOGGER.log(Level.INFO, "Cycle " + (env.hour + 1) + " complete.");
 			}
 		}
@@ -173,7 +165,6 @@ public class Environment {
 			}
 			writer.writeToFile("\nAir Temperature:" + String.valueOf(env.getAirTemperature()) + ",");
 			LOGGER.log(Level.FINE, "Air Temperature data written to file.");
-			Environment.AirThermometerDevice.run();
 		}
 		
 		public synchronized void increase (int rate) {
@@ -199,7 +190,6 @@ public class Environment {
 			}
 			writer.writeToFile("\nWater Temperature:" + String.valueOf(env.getWaterTemperature()) + ",");
 			LOGGER.log(Level.FINE, "Water Temperature data written to file.");
-			Environment.WaterThermometerDevice.run();
 		}
 		
 		private synchronized void increase (int rate) {
@@ -348,7 +338,6 @@ public class Environment {
 			} 
 			writer.writeToFile("\nPH:" + String.valueOf(env.getPH()) + ",");
 			LOGGER.log(Level.FINE, "PH data written to file.");
-			Environment.PHMeterDevice.run();
 		}
 		
 		private synchronized float calcTotalRespirationRate() {
@@ -416,33 +405,11 @@ public class Environment {
 					+ "\nCO2:" + env.getDissolvedCO2() + ","));
 			
 			LOGGER.log(Level.FINE, "Gases data written to file.");
-			Environment.OxygenMeterDevice.run();	
-			Environment.CO2MeterDevice.run();
 		}
 	}
 	
-	public void makeClockDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.ClockDevice =  new main.java.fishtank.devices.Clock(id, name, manufacturer, model, this);
-	}
-	
-	public void makeAirThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.AirThermometerDevice = new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this);
-	}	
-	
-	public void makeWaterThermometerDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.WaterThermometerDevice = new main.java.fishtank.devices.WaterThermometer(id, name, manufacturer, model, this);
-	}
-	
-	public void makeOxygenMeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.OxygenMeterDevice = new main.java.fishtank.devices.OxygenMeter(id, name, manufacturer, model, this);
-	}
-	
-	public void makeCO2MeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.CO2MeterDevice = new main.java.fishtank.devices.CO2Meter(id, name, manufacturer, model, this);
-	}
-	
-	public void makePHMeterDevice(final String id, final String name, final String manufacturer, final String model) {
-		Environment.PHMeterDevice = new main.java.fishtank.devices.PHMeter(id, name, manufacturer, model, this);
+	public void closeWriter(){
+		writer.done();
 	}
 	
 	public void calculateInterval() {
@@ -458,7 +425,7 @@ public class Environment {
 	}
 	
 	public boolean getRun() {
-		return Environment.run;
+		return this.run;
 	}
 	
 	public int getHour() {

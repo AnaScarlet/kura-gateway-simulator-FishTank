@@ -28,4 +28,6 @@ public interface FishTankDevice {
 	
 	@Override
 	public String toString();
+
+	public boolean writeToFile();
 }

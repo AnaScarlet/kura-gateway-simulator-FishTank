@@ -30,7 +30,7 @@ public class MyScheduledExecutor {
 		scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 	        public void run() {
 	        	env.callElements();
-	            System.out.println("Executed!");
+	        	LOGGER.info("Environment Executed!");
 	        }
 	    }, 0, env.getInterval(), TimeUnit.MILLISECONDS);
 		
@@ -38,7 +38,8 @@ public class MyScheduledExecutor {
 			scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 				        public void run() {
 				        	devicesCentral.runDevices();
-				            System.out.println("Executed!");
+				        	LOGGER.info(devicesCentral.getDevicesDataAsString());
+				        	LOGGER.info("Devices Executed!");
 				        }
 				    }, 0, devicesCentral.getTimeInterval(), TimeUnit.MILLISECONDS);
 		}

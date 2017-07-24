@@ -15,8 +15,8 @@ public class PHMeter implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Thread t;
-	
+	private final String type = "PHMeter.class";
+			
 	private Environment env;
 	private ArrayList<Float> phArray;
 	
@@ -34,10 +34,9 @@ public class PHMeter implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		LOGGER.log(Level.FINE, "Update received. Uploading data...");
 		final Float dataPoint = Float.valueOf(env.getPH());
 		phArray.add(dataPoint);
-		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -71,6 +70,18 @@ public class PHMeter implements FishTankDevice {
 
 	public String getModel() {
 		return this.model;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getDataArrayString() {
+		String stringArray = "";
+		for (Float element : this.phArray) {
+			stringArray += element.toString() + ", ";
+		}
+		return stringArray;
 	}
 
 	@Override

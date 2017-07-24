@@ -21,7 +21,7 @@ public class MakingDevicesTest {
 
 		DevicesCentral devicesCentral = new DevicesCentral(env, env.getInterval());
 		
-		devicesCentral.createDevice(DevicesCentral.AIR_THEMOMETER, "1", "Air Thermometer", "Eclipse", "X");
+		devicesCentral.createDevice(DevicesCentral.AIR_THERMOMETER, "1", "Air Thermometer", "Eclipse", "X");
 		devicesCentral.createDevice(DevicesCentral.CLOCK, "2", "Clock", "Eclipse", "X");
 		devicesCentral.createDevice(DevicesCentral.CO2_METER, "3", "CO2 Pro", "Google", "Pro1");
 		devicesCentral.createDevice(DevicesCentral.OXYGEN_METER, "4", "Oxygen Pro", "Google", "Pro2");

@@ -23,7 +23,9 @@ import com.google.gson.GsonBuilder;
 
 import main.java.fishtank.environment.Environment;
 import resources.GsonDeserializer;
+import resources.GsonDeserializerDevices;
 import resources.GsonSerializer;
+import resources.GsonSerializerDevices;
 
 public class WriteToJSONFile {
 	
@@ -36,6 +38,8 @@ public class WriteToJSONFile {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(Environment.class, new GsonSerializer());
 		gsonBuilder.registerTypeAdapter(Environment.class, new GsonDeserializer());
+		gsonBuilder.registerTypeAdapter(FishTankDevice.class, new GsonSerializerDevices());
+		gsonBuilder.registerTypeAdapter(DevicesCentral.class, new GsonDeserializerDevices());
 		gsonBuilder.setPrettyPrinting();
 		this.gson= gsonBuilder.create();
 		this.dataFilePath = new File("src/resources/jsonData.json").getAbsolutePath();
@@ -47,13 +51,19 @@ public class WriteToJSONFile {
 
 	public void writeToFile (final FishTankDevice obj) {
 		final String gsonRepr = this.gson.toJson(obj);
-		LOGGER.log(Level.INFO, "Object converted to JSON representation.", gsonRepr);
+		LOGGER.log(Level.INFO, "FishTankDevice object converted to JSON representation.", gsonRepr);
+		this.writeData(gsonRepr);
+	}
+	
+	public void writeToFile (final DevicesCentral obj) {
+		final String gsonRepr = this.gson.toJson(obj);
+		LOGGER.log(Level.INFO, "DevicesCentral object converted to JSON representation.", gsonRepr);
 		this.writeData(gsonRepr);
 	}
 	
 	public void writeToFile (final Environment obj) {
 		String gsonRepr = this.gson.toJson(obj);
-		LOGGER.log(Level.INFO, "Object converted to JSON representation.", gsonRepr);
+		LOGGER.log(Level.INFO, "Environment object converted to JSON representation.", gsonRepr);
 		this.writeData(gsonRepr);
 	}
 	
@@ -68,19 +78,26 @@ public class WriteToJSONFile {
 		}
 	}
 
-	public Environment getData() {
+	public Environment getEnvironmentData() {
+		return this.gson.fromJson(this.getStringRepr()	, Environment.class);
+	}
+	
+	public DevicesCentral getDevicesData() {
+		return this.gson.fromJson(this.getStringRepr(), DevicesCentral.class);
+	}
+	
+	private String getStringRepr() {
 		String jsonStringRepr = "";
 		try (Scanner scanner = new Scanner(new File(this.dataFilePath))) {
 			while (scanner.hasNextLine()){
 				jsonStringRepr += scanner.nextLine();
-				LOGGER.info(jsonStringRepr);
+				LOGGER.fine(jsonStringRepr);
 			} 
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
-		
-		return this.gson.fromJson(jsonStringRepr, Environment.class);
+		return jsonStringRepr;
 	}
 	
 	public void setDataFilePath(final String filePath) {

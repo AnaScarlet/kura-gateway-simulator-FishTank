@@ -15,7 +15,7 @@ public class WaterThermometer implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Thread t;
+	private final String type = "WaterThermometer.class";
 	
 	private Environment env;
 	private ArrayList<Integer> tempArray;
@@ -33,10 +33,9 @@ public class WaterThermometer implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		LOGGER.log(Level.FINE, "Update received. Uploading data...");
 		final Integer dataPoint = Integer.valueOf(env.getWaterTemperature());
 		tempArray.add(dataPoint);
-		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -70,6 +69,18 @@ public class WaterThermometer implements FishTankDevice {
 
 	public String getModel() {
 		return this.model;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getDataArrayString() {
+		String stringArray = "";
+		for (Integer element : this.tempArray) {
+			stringArray += element.toString() + ", ";
+		}
+		return stringArray;
 	}
 
 	@Override

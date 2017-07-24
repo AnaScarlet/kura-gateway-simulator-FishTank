@@ -10,7 +10,7 @@ public class DevicesCentral {
 	private int timeInterval;
 	private Environment env;
 	
-	public static final int AIR_THEMOMETER = 1;
+	public static final int AIR_THERMOMETER = 1;
 	public static final int CLOCK = 2;
 	public static final int CO2_METER = 3;
 	public static final int OXYGEN_METER = 4;
@@ -26,7 +26,7 @@ public class DevicesCentral {
 	public void createDevice(final int TYPE_OF_DEVICE, final String id, 
 			final String name, final String manufacturer, final String model) {
 		switch(TYPE_OF_DEVICE) {
-		case AIR_THEMOMETER: 
+		case AIR_THERMOMETER: 
 			this.devicesList.add(new main.java.fishtank.devices.AirThermometer(id, name, manufacturer, model, this.env));
 			break;
 		case CLOCK: 
@@ -72,6 +72,22 @@ public class DevicesCentral {
 	
 	public int getTimeInterval(){
 		return this.timeInterval;
+	}
+	
+	public String getDevicesDataAsString() {
+		String devicesData = "";
+		for (FishTankDevice device : this.devicesList) {
+			devicesData += device.getDataArrayString() + "\n";
+		}
+		return devicesData;
+	}
+	
+	public String toString() {
+		String devicesListStringRepr = "";
+		for (FishTankDevice device : devicesList) {
+			devicesListStringRepr += device.toString() + "\n";
+		}
+		return "Time Interval: " + this.timeInterval + ", Devices List:\n" + devicesListStringRepr;
 	}
 	
 }

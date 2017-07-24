@@ -26,6 +26,10 @@ public interface FishTankDevice {
 	
 	public String getModel();
 	
+	public String getType();
+	
+	public String getDataArrayString();
+	
 	@Override
 	public String toString();
 

@@ -15,7 +15,7 @@ public class OxygenMeter implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Thread t;
+	private final String type = "OxygenMeter.class";
 	
 	private Environment env;
 	private ArrayList<Float> airArray;
@@ -34,10 +34,9 @@ public class OxygenMeter implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		LOGGER.log(Level.FINE, "Update received. Uploading data...");
 		final Float dataPoint = Float.valueOf(env.getDissolvedOxygen());
 		airArray.add(dataPoint);
-		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -71,6 +70,18 @@ public class OxygenMeter implements FishTankDevice {
 
 	public String getModel() {
 		return this.model;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getDataArrayString() {
+		String stringArray = "";
+		for (Float element : this.airArray) {
+			stringArray += element.toString() + ", ";
+		}
+		return stringArray;
 	}
 
 	@Override

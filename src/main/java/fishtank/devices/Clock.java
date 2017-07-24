@@ -25,8 +25,8 @@ public class Clock implements FishTankDevice {
 	private final String name;
 	private final String manufacturer;
 	private final String model;
-	private Thread t;
-	
+	private final String type = "Clock.class";
+			
 	private Environment env;
 	private ArrayList<Integer> hoursArray;
 	
@@ -44,10 +44,9 @@ public class Clock implements FishTankDevice {
 	
 	public void run() {
 		this.isRunning = true;
-		LOGGER.log(Level.INFO, "Update received. Uploading data...");
+		LOGGER.log(Level.FINE, "Update received. Uploading data...");
 		final Integer dataPoint  = Integer.valueOf(env.getHour());
 		hoursArray.add(dataPoint);
-		LOGGER.info(String.valueOf(dataPoint));
 	}
 
 	public boolean writeToFile() {
@@ -81,6 +80,18 @@ public class Clock implements FishTankDevice {
 
 	public String getModel() {
 		return this.model;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getDataArrayString() {
+		String stringArray = "";
+		for (Integer element : this.hoursArray) {
+			stringArray += element.toString() + ", ";
+		}
+		return stringArray;
 	}
 
 	@Override

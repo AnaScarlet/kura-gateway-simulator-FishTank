@@ -26,32 +26,34 @@ public class FishTank {
 		writer.setDataFilePath(configFile.getAbsolutePath());
 		
 		if (!configFile.exists() && !configFile.isDirectory()) {
-			writer.writeToFile(new Environment());
 			LOGGER.info("First time creating the configuration file.");
+			writer.writeToFile(new Environment());
 		}
 		
-		Environment env = writer.getData();
+		Environment env = writer.getEnvironmentData();
 		LOGGER.info("Environment object created: " + env.toString());
 		
-		DevicesCentral devicesCentral = new DevicesCentral(env, 12000);
+		File devicesFile = new File("src/main/java/fishtank/main/devices.json");
+		writer.setDataFilePath(devicesFile.getAbsolutePath());
 		
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e1) {
-			LOGGER.log(Level.SEVERE, e1.toString(), e1);
+		if (!devicesFile.exists() && !devicesFile.isDirectory()) {
+			LOGGER.info("First time creating the devices file.");
+			DevicesCentral devicesCentral = new DevicesCentral(env, env.getInterval());
+			devicesCentral.createDevice(DevicesCentral.AIR_THERMOMETER, "1", "Air Thermometer", "Eclipse", "X");
+			devicesCentral.createDevice(DevicesCentral.CLOCK, "2", "Clock", "Eclipse", "X");
+			devicesCentral.createDevice(DevicesCentral.CO2_METER, "3", "CO2 Pro", "Google", "Pro1");
+			devicesCentral.createDevice(DevicesCentral.OXYGEN_METER, "4", "Oxygen Pro", "Google", "Pro2");
+			devicesCentral.createDevice(DevicesCentral.PH_METER, "5", "PH Measuring Pro", "Google", "ProX");
+			devicesCentral.createDevice(DevicesCentral.WATER_THEMOMETER, "6", "Water Thermometer", "Eclipse", "XX");
+			LOGGER.info(devicesCentral.toString());
+			writer.writeToFile(devicesCentral);
 		}
 		
-		devicesCentral.createDevice(DevicesCentral.AIR_THEMOMETER, "1", "Air Thermometer", "Eclipse", "X");
-		devicesCentral.createDevice(DevicesCentral.CLOCK, "2", "Clock", "Eclipse", "X");
-		devicesCentral.createDevice(DevicesCentral.CO2_METER, "3", "CO2 Pro", "Google", "Pro1");
-		devicesCentral.createDevice(DevicesCentral.OXYGEN_METER, "4", "Oxygen Pro", "Google", "Pro2");
-		devicesCentral.createDevice(DevicesCentral.PH_METER, "5", "PH Measuring Pro", "Google", "ProX");
-		devicesCentral.createDevice(DevicesCentral.WATER_THEMOMETER, "6", "Water Thermometer", "Eclipse", "XX");
-		
-		LOGGER.info("Devices created and started.");
+		DevicesCentral devicesCentral = writer.getDevicesData();	
+		LOGGER.info("Devices created and started: " + devicesCentral.toString());
 		
 		MyScheduledExecutor executor = new MyScheduledExecutor(env, devicesCentral);
-		executor.schedule();
+		executor.schedule();		
 		
 		//TODO User input for how long to run the simulation?
 		try {

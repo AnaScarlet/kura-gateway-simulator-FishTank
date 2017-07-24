@@ -1,0 +1,61 @@
+{
+  "devicesList": [
+    {
+      "id": "1",
+      "name": "Air Thermometer",
+      "manufacturer": "Eclipse",
+      "model": "X",
+      "type": "AirThermometer.class"
+    },
+    {
+      "id": "2",
+      "name": "Clock",
+      "manufacturer": "Eclipse",
+      "model": "X",
+      "type": "Clock.class"
+    },
+    {
+      "id": "3",
+      "name": "CO2 Pro",
+      "manufacturer": "Google",
+      "model": "Pro1",
+      "type": "CO2Meter.class"
+    },
+    {
+      "id": "4",
+      "name": "Oxygen Pro",
+      "manufacturer": "Google",
+      "model": "Pro2",
+      "type": "OxygenMeter.class"
+    },
+    {
+      "id": "5",
+      "name": "PH Measuring Pro",
+      "manufacturer": "Google",
+      "model": "ProX",
+      "type": "PHMeter.class"
+    },
+    {
+      "id": "6",
+      "name": "Water Thermometer",
+      "manufacturer": "Eclipse",
+      "model": "XX",
+      "type": "WaterThermometer.class"
+    }
+  ],
+  "timeInterval": 6000,
+  "env": {
+    "hour": 0,
+    "air temperature": 25,
+    "water temperature": 25,
+    "time speed": 10,
+    "dissolved CO2": 5.0,
+    "dissolved oxygen": 5.0,
+    "pH": 7.0,
+    "plant number": 1,
+    "decomposers number": 20,
+    "small fish number": 3,
+    "medium fish number": 0,
+    "large fish number": 0
+  }
+}

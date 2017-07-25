@@ -87,7 +87,7 @@ public class DevicesCentral {
 	public String getDevicesDataAsString() {
 		String devicesData = "";
 		for (FishTankDevice device : this.devicesList) {
-			devicesData += device.getDataArrayString() + "\n";
+			devicesData += "\n" + device.getName() + ": " + device.getDataArrayString();
 		}
 		return devicesData;
 	}
@@ -95,7 +95,7 @@ public class DevicesCentral {
 	public String toString() {
 		String devicesListStringRepr = "";
 		for (FishTankDevice device : devicesList) {
-			devicesListStringRepr += device.toString() + "\n";
+			devicesListStringRepr += (device.toString() + "\n");
 		}
 		return "Time Interval: " + this.timeInterval + ", Devices List:\n" + devicesListStringRepr;
 	}

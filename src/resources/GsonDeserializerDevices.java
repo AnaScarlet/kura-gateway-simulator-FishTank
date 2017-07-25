@@ -24,6 +24,7 @@ import com.google.gson.JsonParseException;
 
 import main.java.fishtank.devices.DevicesCentral;
 import main.java.fishtank.environment.Environment;
+import main.java.fishtank.main.FishTank;
 
 public class GsonDeserializerDevices implements JsonDeserializer<DevicesCentral> {
 
@@ -36,17 +37,8 @@ public class GsonDeserializerDevices implements JsonDeserializer<DevicesCentral>
 		
 		final JsonObject jsonObject = json.getAsJsonObject();
 		
-		final JsonObject envJson = jsonObject.get("env").getAsJsonObject();
-
-		GsonBuilder gsonBuilder = new GsonBuilder();
-		gsonBuilder.registerTypeAdapter(Environment.class, new GsonSerializer());
-		gsonBuilder.registerTypeAdapter(Environment.class, new GsonDeserializer());
-		gsonBuilder.setPrettyPrinting();
-		Gson gson= gsonBuilder.create();
-		Environment env = gson.fromJson(envJson, Environment.class);
-		
 		final int timeInterval = jsonObject.get("timeInterval").getAsInt();
-		DevicesCentral devicesCentral = new DevicesCentral(env, timeInterval);
+		DevicesCentral devicesCentral = new DevicesCentral(FishTank.env, timeInterval);
 		
 		final JsonArray devicesList = jsonObject.get("devicesList").getAsJsonArray();
 		for (JsonElement device : devicesList) {

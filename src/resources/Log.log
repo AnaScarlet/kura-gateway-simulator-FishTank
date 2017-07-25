@@ -1,592 +1,917 @@
-Jul 11, 2017 10:11:59 PM test.java.fishtank.environment.ALoggerTest testLogs
-INFO: Hi from logger test
-Jul 11, 2017 10:11:59 PM test.java.fishtank.environment.ALoggerTest testLogs
-FINEST: Hi from logger test
-Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: C:\Users\Owner\git\kura-gateway-simulator-FishTank\src\main\java\fishtank\main\configuration.json
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,  "plant number": 1,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,  "plant number": 1,  "decomposers number": 20,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,  "plant number": 1,  "decomposers number": 20,  "small fish number": 3,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,  "plant number": 1,  "decomposers number": 20,  "small fish number": 3,  "medium fish number": 0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,  "plant number": 1,  "decomposers number": 20,  "small fish number": 3,  "medium fish number": 0,  "large fish number": 0
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "hour": 0,  "air temperature": 25,  "water temperature": 25,  "time speed": 10,  "dissolved CO2": 5.0,  "dissolved oxygen": 5.0,  "pH": 7.0,  "plant number": 1,  "decomposers number": 20,  "small fish number": 3,  "medium fish number": 0,  "large fish number": 0}
+Jul 25, 2017 12:51:05 PM resources.GsonDeserializer deserialize
+INFO: Using Environement deserializer
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment <init>
 FINE: Preparations complete.
-Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment createThread
-INFO: Clock Thread started
-Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment run
-FINE: Threads started.
-Jul 11, 2017 10:11:59 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.main.FishTank main
+INFO: Environment object created: Air Temperature: 25, Decomposers:20, Dossolved CO2:5.0, Dissolved Oxygen:5.0, Hour:0, Large Fish:0, Medium Fish:0, Small Fish:3, PH:7.0, Plants:1, Time Speed:10, Water Temperature:25, Time Interval: 60000
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: C:\Users\Owner\git\kura-gateway-simulator-FishTank\src\main\java\fishtank\main\devices.json
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,    "decomposers number": 20,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,    "decomposers number": 20,    "small fish number": 3,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,    "decomposers number": 20,    "small fish number": 3,    "medium fish number": 0,
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,    "decomposers number": 20,    "small fish number": 3,    "medium fish number": 0,    "large fish number": 0
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,    "decomposers number": 20,    "small fish number": 3,    "medium fish number": 0,    "large fish number": 0  }
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WriteToJSONFile getStringRepr
+FINE: {  "devicesList": [    {      "id": "1",      "name": "Air Thermometer",      "manufacturer": "Eclipse",      "model": "X",      "type": "AirThermometer.class"    },    {      "id": "2",      "name": "Clock",      "manufacturer": "Eclipse",      "model": "X",      "type": "Clock.class"    },    {      "id": "3",      "name": "CO2 Pro",      "manufacturer": "Google",      "model": "Pro1",      "type": "CO2Meter.class"    },    {      "id": "4",      "name": "Oxygen Pro",      "manufacturer": "Google",      "model": "Pro2",      "type": "OxygenMeter.class"    },    {      "id": "5",      "name": "PH Measuring Pro",      "manufacturer": "Google",      "model": "ProX",      "type": "PHMeter.class"    },    {      "id": "6",      "name": "Water Thermometer",      "manufacturer": "Eclipse",      "model": "XX",      "type": "WaterThermometer.class"    },    {      "id": "7",      "name": "Thermom",      "manufacturer": "HP",      "model": "2012",      "type": "WaterThermometer.class"    }  ],  "timeInterval": 6000,  "env": {    "hour": 0,    "air temperature": 25,    "water temperature": 25,    "time speed": 10,    "dissolved CO2": 5.0,    "dissolved oxygen": 5.0,    "pH": 7.0,    "plant number": 1,    "decomposers number": 20,    "small fish number": 3,    "medium fish number": 0,    "large fish number": 0  }}
+Jul 25, 2017 12:51:05 PM resources.GsonDeserializerDevices deserialize
+INFO: Using FishTankDevice deserializer
+Jul 25, 2017 12:51:05 PM main.java.fishtank.main.FishTank main
+INFO: Devices created and started: Time Interval: 6000, Devices List:
+ID: 1 Name: Air Thermometer Manufacturer: Eclipse Model: X
+ID: 2 Name: Clock Manufacturer: Eclipse Model: X
+ID: 3 Name: CO2 Pro Manufacturer: Google Model: Pro1
+ID: 4 Name: Oxygen Pro Manufacturer: Google Model: Pro2
+ID: 5 Name: PH Measuring Pro Manufacturer: Google Model: ProX
+ID: 6 Name: Water Thermometer Manufacturer: Eclipse Model: XX
+ID: 7 Name: Thermom Manufacturer: HP Model: 2012
+
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Clock run
 FINE: In Clock Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Clock run
 FINE: Clock data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$AirTemperature run
-FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
-FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Fish run
-FINE: In Fish Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Fish run
-FINE: Fish data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Decomposers run
-FINE: In Decomposers Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Decomposers run
-FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Plants run
-FINE: In Plants Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Plants run
-FINE: Plant data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$PH run
-FINE: In PH Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$PH run
-FINE: PH data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Gases run
-FINE: In Gases Thread
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Gases run
-FINE: Gases data written to file.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:05 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 2 complete.
-Jul 11, 2017 10:12:05 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 
+Clock: 1, 
+CO2 Pro: 5.0, 
+Oxygen Pro: 5.0, 
+PH Measuring Pro: 7.0, 
+Water Thermometer: 25, 
+Thermom: 25, 
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:05 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:11 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:05 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 3 complete.
-Jul 11, 2017 10:12:11 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:11 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 
+Clock: 1, 2, 
+CO2 Pro: 5.0, 5.2000003, 
+Oxygen Pro: 5.0, 4.9999995, 
+PH Measuring Pro: 7.0, 6.99, 
+Water Thermometer: 25, 25, 
+Thermom: 25, 25, 
+Jul 25, 2017 12:51:11 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:17 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:11 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 4 complete.
-Jul 11, 2017 10:12:17 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 
+Clock: 1, 2, 3, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 
+Water Thermometer: 25, 25, 25, 
+Thermom: 25, 25, 25, 
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:23 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:17 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 5 complete.
-Jul 11, 2017 10:12:23 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 
+Clock: 1, 2, 3, 4, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 
+Water Thermometer: 25, 25, 25, 25, 
+Thermom: 25, 25, 25, 25, 
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:29 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:23 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 6 complete.
-Jul 11, 2017 10:12:29 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 
+Clock: 1, 2, 3, 4, 5, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 
+Water Thermometer: 25, 25, 25, 25, 25, 
+Thermom: 25, 25, 25, 25, 25, 
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:29 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:35 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:29 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 7 complete.
-Jul 11, 2017 10:12:35 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 25, 
+Clock: 1, 2, 3, 4, 5, 6, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 6.0000014, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 4.9999976, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 6.949999, 
+Water Thermometer: 25, 25, 25, 25, 25, 25, 
+Thermom: 25, 25, 25, 25, 25, 25, 
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:41 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:35 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 8 complete.
-Jul 11, 2017 10:12:41 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 25, 25, 
+Clock: 1, 2, 3, 4, 5, 6, 7, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 6.0000014, 6.2000017, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 4.9999976, 4.999997, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 6.949999, 6.9399986, 
+Water Thermometer: 25, 25, 25, 25, 25, 25, 25, 
+Thermom: 25, 25, 25, 25, 25, 25, 24, 
+Jul 25, 2017 12:51:41 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:47 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:41 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 9 complete.
-Jul 11, 2017 10:12:47 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:53 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:47 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 
+Clock: 1, 2, 3, 4, 5, 6, 7, 8, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 6.0000014, 6.2000017, 6.400002, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 4.9999976, 4.999997, 4.9999967, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 6.949999, 6.9399986, 6.9299984, 
+Water Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 
+Thermom: 25, 25, 25, 25, 25, 25, 24, 23, 
+Jul 25, 2017 12:51:47 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:47 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 10 complete.
-Jul 11, 2017 10:12:53 PM main.java.fishtank.environment.Environment$Clock run
-FINE: In Clock Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Clock run
-FINE: Clock data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: In Air Temperature Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$AirTemperature run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$AirTemperature run
 FINE: Air Temperature data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.AirThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.AirThermometer run
-INFO: 22
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: In Water Temperature Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$WaterTemperature run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$WaterTemperature run
 FINE: Water Temperature data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.WaterThermometer run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.WaterThermometer run
-INFO: 22
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Fish run
 FINE: In Fish Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Fish run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Fish run
 FINE: Fish data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: In Decomposers Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Decomposers run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Decomposers run
 FINE: Decomposers data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Plants run
 FINE: In Plants Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Plants run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 22, 
+Clock: 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 6.0000014, 6.2000017, 6.400002, 6.6000023, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 4.9999976, 4.999997, 4.9999967, 4.999996, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 6.949999, 6.9399986, 6.9299984, 6.919998, 
+Water Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 22, 
+Thermom: 25, 25, 25, 25, 25, 25, 24, 23, 22, 
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Plants run
 FINE: Plant data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$PH run
 FINE: In PH Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$PH run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$PH run
 FINE: PH data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.PHMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.PHMeter run
-INFO: 6.0
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Gases run
 FINE: In Gases Thread
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Gases run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.environment.Environment$Gases run
 FINE: Gases data written to file.
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.OxygenMeter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.OxygenMeter run
-INFO: 2.25
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.CO2Meter run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.CO2Meter run
-INFO: 7.75
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.Clock run
-INFO: Update received. Uploading data...
-Jul 11, 2017 10:12:59 PM main.java.fishtank.devices.Clock run
-INFO: 11
-Jul 11, 2017 10:12:59 PM main.java.fishtank.environment.Environment$Clock run
+Jul 25, 2017 12:51:53 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Clock run
 INFO: Cycle 11 complete.
-Jul 11, 2017 10:13:04 PM test.java.fishtank.environment.EnvironmentTest main
-FINE: Everything is done and cleaned.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 22, 22, 
+Clock: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 6.0000014, 6.2000017, 6.400002, 6.6000023, 6.8000026, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 4.9999976, 4.999997, 4.9999967, 4.999996, 4.9999957, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 6.949999, 6.9399986, 6.9299984, 6.919998, 6.909998, 
+Water Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 22, 22, 
+Thermom: 25, 25, 25, 25, 25, 25, 24, 23, 22, 22, 
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 25, 2017 12:51:59 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 25, 2017 12:51:59 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Clock run
+FINE: In Clock Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Clock run
+FINE: Clock data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Clock run
+INFO: Cycle 12 complete.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: In Air Temperature Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$AirTemperature run
+FINE: Air Temperature data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.AirThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: In Water Temperature Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$WaterTemperature run
+FINE: Water Temperature data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Fish run
+FINE: In Fish Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Fish run
+FINE: Fish data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: In Decomposers Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Decomposers run
+FINE: Decomposers data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Plants run
+FINE: In Plants Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.Clock run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.main.MyScheduledExecutor shutdownExecutor
+INFO: Executor is shutting down...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.CO2Meter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.OxygenMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.PHMeter run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Plants run
+FINE: Plant data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.devices.WaterThermometer run
+FINE: Update received. Uploading data...
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$PH run
+FINE: In PH Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$PH run
+FINE: PH data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: 
+Air Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 22, 22, 22, 
+Clock: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+CO2 Pro: 5.0, 5.2000003, 5.4000006, 5.600001, 5.800001, 6.0000014, 6.2000017, 6.400002, 6.6000023, 6.8000026, 7.000003, 
+Oxygen Pro: 5.0, 4.9999995, 4.999999, 4.9999986, 4.999998, 4.9999976, 4.999997, 4.9999967, 4.999996, 4.9999957, 4.999995, 
+PH Measuring Pro: 7.0, 6.99, 6.9799995, 6.9699993, 6.959999, 6.949999, 6.9399986, 6.9299984, 6.919998, 6.909998, 6.8999977, 
+Water Thermometer: 25, 25, 25, 25, 25, 25, 25, 23, 22, 22, 22, 
+Thermom: 25, 25, 25, 25, 25, 25, 24, 23, 22, 22, 22, 
+Jul 25, 2017 12:52:05 PM main.java.fishtank.main.MyScheduledExecutor$2 run
+INFO: Devices Executed!
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Gases run
+FINE: In Gases Thread
+Jul 25, 2017 12:52:05 PM main.java.fishtank.environment.Environment$Gases run
+FINE: Gases data written to file.
+Jul 25, 2017 12:52:05 PM main.java.fishtank.main.MyScheduledExecutor$1 run
+INFO: Environment Executed!
+Jul 25, 2017 12:52:09 PM main.java.fishtank.environment.WriteToFile done
+INFO: Environment writer closing down.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/air-thermometer-1-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/clock-2-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/co2-meter-3-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/oxygen-meter-4-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/ph-meter-5-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/water-thermometer-6-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile setDataFilePath
+INFO: Data file path set to: src/resources/water-thermometer-7-data.json
+Jul 25, 2017 12:52:09 PM resources.GsonSerializer serialize
+INFO: Using Environement serializer
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeToFile
+INFO: FishTankDevice object converted to JSON representation.
+Jul 25, 2017 12:52:09 PM main.java.fishtank.devices.WriteToJSONFile writeData
+INFO: Object written to file.

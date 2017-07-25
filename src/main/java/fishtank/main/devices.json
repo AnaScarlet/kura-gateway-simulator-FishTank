@@ -41,6 +41,13 @@
       "manufacturer": "Eclipse",
       "model": "XX",
       "type": "WaterThermometer.class"
+    },
+    {
+      "id": "7",
+      "name": "Thermom",
+      "manufacturer": "HP",
+      "model": "2012",
+      "type": "WaterThermometer.class"
     }
   ],
   "timeInterval": 6000,

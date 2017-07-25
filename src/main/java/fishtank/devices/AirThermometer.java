@@ -51,7 +51,7 @@ public class AirThermometer implements FishTankDevice {
 	public boolean writeToFile() {
 		if (!this.isRunning) {
 			WriteToJSONFile writer = new WriteToJSONFile();
-			writer.setDataFilePath("src/resources/air-thermometer-data.json");
+			writer.setDataFilePath("src/resources/air-thermometer-" + this.id + "-data.json");
 			writer.writeToFile(this);
 			return true;
 		} return false;

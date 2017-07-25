@@ -1,0 +1,35 @@
+{
+  "isRunning": false,
+  "id": "6",
+  "name": "Water Thermometer",
+  "manufacturer": "Eclipse",
+  "model": "XX",
+  "type": "WaterThermometer.class",
+  "env": {
+    "hour": 11,
+    "air temperature": 22,
+    "water temperature": 22,
+    "time speed": 10,
+    "dissolved CO2": 7.200003,
+    "dissolved oxygen": 4.9999948,
+    "pH": 6.8899975,
+    "plant number": 1,
+    "decomposers number": 20,
+    "small fish number": 3,
+    "medium fish number": 0,
+    "large fish number": 0
+  },
+  "tempArray": [
+    25,
+    25,
+    25,
+    25,
+    25,
+    25,
+    25,
+    23,
+    22,
+    22,
+    22
+  ]
+}

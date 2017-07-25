@@ -18,7 +18,7 @@ public interface FishTankDevice {
 	
 	public void setIsRunning(boolean value);
 	
-	public String getID();
+	public String getID(); // must have no spaces
 	
 	public String getName();
 	

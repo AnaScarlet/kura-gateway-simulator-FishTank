@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package resources;
+package main.java.fishtank.main;
 
 import java.lang.reflect.Type;
 import java.util.logging.Logger;

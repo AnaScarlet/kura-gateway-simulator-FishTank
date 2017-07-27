@@ -8,8 +8,9 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package resources;
+package main.java.fishtank.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.*;
 
@@ -22,7 +23,11 @@ public class MyLogger {
 		Logger logger = Logger.getLogger("");
 		 
 		logger.setLevel(Level.ALL);
-		handler = new FileHandler("src/resources/Log.log");
+		File file = new File("src/main/resources/Log.log");
+		if (!file.exists()) {
+			file.mkdirs();
+		}
+		handler = new FileHandler(file.getAbsolutePath());
 		formatter = new SimpleFormatter();
 		handler.setFormatter(formatter);
 		logger.addHandler(handler);

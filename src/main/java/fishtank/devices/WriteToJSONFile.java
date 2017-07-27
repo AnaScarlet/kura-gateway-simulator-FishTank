@@ -22,10 +22,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import main.java.fishtank.environment.Environment;
-import resources.GsonDeserializer;
-import resources.GsonDeserializerDevices;
-import resources.GsonSerializer;
-import resources.GsonSerializerDevices;
+import main.java.fishtank.main.GsonDeserializer;
+import main.java.fishtank.main.GsonDeserializerDevices;
+import main.java.fishtank.main.GsonSerializer;
+import main.java.fishtank.main.GsonSerializerDevices;
 
 public class WriteToJSONFile {
 	
@@ -42,7 +42,7 @@ public class WriteToJSONFile {
 		gsonBuilder.registerTypeAdapter(DevicesCentral.class, new GsonDeserializerDevices());
 		gsonBuilder.setPrettyPrinting();
 		this.gson= gsonBuilder.create();
-		this.dataFilePath = new File("src/resources/jsonData.json").getAbsolutePath();
+		this.dataFilePath = new File("src/main/resources/jsonData.json").getAbsolutePath();
 	}
 	
 	public WriteToJSONFile(final String filePath) {

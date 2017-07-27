@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 import main.java.fishtank.devices.DevicesCentral;
 import main.java.fishtank.devices.WriteToJSONFile;
 import main.java.fishtank.environment.Environment;
-import resources.*;
 
 public class FishTank {
 	

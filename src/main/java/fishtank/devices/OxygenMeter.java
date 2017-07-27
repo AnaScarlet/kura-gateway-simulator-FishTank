@@ -52,7 +52,7 @@ public class OxygenMeter implements FishTankDevice {
 	public boolean writeToFile() {
 		if (!this.isRunning) {
 			WriteToJSONFile writer = new WriteToJSONFile();
-			writer.setDataFilePath("src/resources/oxygen-meter-" + this.id + "-data.json");
+			writer.setDataFilePath("src/main/resources/oxygen-meter-" + this.id + "-data.json");
 			writer.writeToFile(this);
 			return true;
 		} return false;

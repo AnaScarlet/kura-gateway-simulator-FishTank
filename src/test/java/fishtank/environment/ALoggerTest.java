@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 import org.junit.Test;
 
-import resources.MyLogger;
+import main.java.fishtank.main.MyLogger;
 
 public class ALoggerTest {
 

@@ -52,7 +52,7 @@ public class PHMeter implements FishTankDevice {
 	public boolean writeToFile() {
 		if (!this.isRunning) {
 			WriteToJSONFile writer = new WriteToJSONFile();
-			writer.setDataFilePath("src/resources/ph-meter-" + this.id + "-data.json");
+			writer.setDataFilePath("src/main/resources/ph-meter-" + this.id + "-data.json");
 			writer.writeToFile(this);
 			return true;
 		} return false;

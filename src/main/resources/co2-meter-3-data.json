@@ -10,26 +10,17 @@
     "air temperature": 22,
     "water temperature": 22,
     "time speed": 10,
-    "dissolved CO2": 7.200003,
-    "dissolved oxygen": 4.9999948,
+    "dissolved CO2": 7.75,
+    "dissolved oxygen": 2.25,
     "pH": 6.8899975,
-    "plant number": 1,
+    "plant number": 0,
     "decomposers number": 20,
-    "small fish number": 3,
+    "small fish number": 4,
     "medium fish number": 0,
     "large fish number": 0
   },
   "airArray": [
     5.0,
-    5.2000003,
-    5.4000006,
-    5.600001,
-    5.800001,
-    6.0000014,
-    6.2000017,
-    6.400002,
-    6.6000023,
-    6.8000026,
-    7.000003
+    7.75
   ]
 }

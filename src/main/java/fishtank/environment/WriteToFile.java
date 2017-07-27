@@ -24,7 +24,7 @@ public class WriteToFile {
 	private FileWriter writer;
 	
 	public WriteToFile(String fileName) {
-		this.file = new File("src/resources/" + fileName);
+		this.file = new File("src/main/resources/" + fileName);
 		try {
 			this.writer = new FileWriter(file);
 		} catch (IOException e) {

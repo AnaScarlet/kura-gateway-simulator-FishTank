@@ -1,20 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2017 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     IBM Corporation - initial API and implementation
+ * Copyright (c) 2017 Anastasiya Lazarenko
  *******************************************************************************/
 package main.java.fishtank.main;
 
 import java.lang.reflect.Type;
 import java.util.logging.Logger;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -23,7 +14,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import main.java.fishtank.devices.DevicesCentral;
-import main.java.fishtank.environment.Environment;
 import main.java.fishtank.main.FishTank;
 
 public class GsonDeserializerDevices implements JsonDeserializer<DevicesCentral> {
